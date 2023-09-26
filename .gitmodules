@@ -1,0 +1,6 @@
+[submodule "packages/sea"]
+	path = packages/sea
+	url = https://git.dnt.com.cn/smartmon/scratch/sea.git
+[submodule "packages/land"]
+	path = packages/land
+	url = https://git.dnt.com.cn/smartmon/scratch/land.git
