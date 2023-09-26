@@ -1,0 +1,68 @@
+{
+  "name": "main",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@dnt/axios": "^0.0.1-alpha.3",
+    "@dnt/theme": "^0.0.1-alpha.0",
+    "@dnt/utils": "0.0.1-alpha.0",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.50",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "antd": "^5.9.3",
+    "qiankun": "^2.10.13",
+    "rc-menu": "^9.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "5.0.1",
+    "swr": "^2.2.2",
+    "typescript": "^4.9.5",
+    "web-vitals": "^3.4.0"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@craco/craco": "^7.1.0",
+    "@dnt/tsconfig": "^0.0.1-alpha.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "dotenv": "^16.3.1",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2"
+  },
+  "publishConfig": {
+    "registry": "http://localhost:8081/repository/npm-hosted/"
+  },
+  "files": [
+    "build"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "pnpm --filter ./packages run start",
+    "pkg": "pnpm --filter ./packages run build",
+    "build": "pnpm run pkg && pnpm run postbuild",
+    "postbuild": "rm -rf ./build && mv packages/main/build ./ && mkdir -p ./build/child && mv packages/sea/build ./build/child/sea && mv packages/land/build ./build/child/land",
+    "nginx:test": "$(which nginx) -t -c $(pwd)/nginx.conf",
+    "nginx:start": "yarn run build && $(which nginx) -c $(pwd)/nginx.conf",
+    "nginx:stop": "$(which nginx) -s stop"
+  }
+}
