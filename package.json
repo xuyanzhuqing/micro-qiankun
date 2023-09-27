@@ -13,5 +13,13 @@
     "nginx:test": "$(which nginx) -t -c $(pwd)/nginx.conf",
     "nginx:start": "yarn run build && $(which nginx) -c $(pwd)/nginx.conf",
     "nginx:stop": "$(which nginx) -s stop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.dnt.com.cn/smartmon/scratch/entry.git"
+  },
+  "engines": {
+    "node": ">=18.16",
+    "pnpm": ">=6.11.0"
   }
 }
