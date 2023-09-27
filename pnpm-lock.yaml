@@ -59,6 +59,7 @@ importers:
       '@craco/craco': ^7.1.0
       '@dnt/axios': ^0.0.1-alpha.3
       '@dnt/theme': ^0.0.1-alpha.0
+      '@dnt/tsconfig': ^0.0.1-alpha.0
       '@dnt/utils': ^0.0.1-alpha.1
       '@reduxjs/toolkit': ^1.9.5
       '@testing-library/jest-dom': ^5.17.0
@@ -107,6 +108,7 @@ importers:
     devDependencies:
       '@babel/plugin-proposal-private-property-in-object': 7.21.11
       '@craco/craco': 7.1.0_47bdef51c2a5904e5be8b1006d988dd9
+      '@dnt/tsconfig': 0.0.1-alpha.0
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
       dotenv: 16.3.1
@@ -2477,7 +2479,7 @@ packages:
     dependencies:
       immer: 9.0.21
       react: 18.2.0
-      react-redux: 8.1.2_react-dom@18.2.0+react@18.2.0
+      react-redux: 8.1.2_3abede97f363550deb7a628b23295e6d
       redux: 4.2.1
       redux-thunk: 2.4.2_redux@4.2.1
       reselect: 4.1.8
