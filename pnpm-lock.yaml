@@ -59,8 +59,7 @@ importers:
       '@craco/craco': ^7.1.0
       '@dnt/axios': ^0.0.1-alpha.3
       '@dnt/theme': ^0.0.1-alpha.0
-      '@dnt/tsconfig': ^0.0.1-alpha.0
-      '@dnt/utils': 0.0.1-alpha.0
+      '@dnt/utils': ^0.0.1-alpha.1
       '@reduxjs/toolkit': ^1.9.5
       '@testing-library/jest-dom': ^5.17.0
       '@testing-library/react': ^13.4.0
@@ -87,7 +86,7 @@ importers:
       '@ant-design/icons': 5.2.6_react-dom@18.2.0+react@18.2.0
       '@dnt/axios': 0.0.1-alpha.3_react@18.2.0
       '@dnt/theme': 0.0.1-alpha.0
-      '@dnt/utils': 0.0.1-alpha.0
+      '@dnt/utils': 0.0.1-alpha.1
       '@reduxjs/toolkit': 1.9.6_react-redux@8.1.2+react@18.2.0
       '@testing-library/user-event': 13.5.0
       '@types/jest': 27.5.2
@@ -108,7 +107,6 @@ importers:
     devDependencies:
       '@babel/plugin-proposal-private-property-in-object': 7.21.11
       '@craco/craco': 7.1.0_47bdef51c2a5904e5be8b1006d988dd9
-      '@dnt/tsconfig': 0.0.1-alpha.0
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
       dotenv: 16.3.1
@@ -1923,10 +1921,10 @@ packages:
     dev: false
 
   /@dnt/axios/0.0.1-alpha.3_react@18.2.0:
-    resolution: {integrity: sha512-JUeFX0/FahTD1hIRrAw4UYz8DV3mznKgye0Wga88mwylBfzVEjsRtvHHJtrRNQDvGQLa23JWuYqoygkF4rhOUA==}
+    resolution: {integrity: sha512-iFZUfyP5dHfXqeYDn0b5DlqhWJYBncxxDRoXIEsySnv6hVJ01L4N9N64vlJSgaii+7v5HcK2HTdil0acALOrIA==}
     dependencies:
-      '@dnt/utils': 0.0.1-alpha.0
-      axios: 1.5.0
+      '@dnt/utils': 0.0.1-alpha.1
+      axios: 1.5.1
       swr: 2.2.4_react@18.2.0
     transitivePeerDependencies:
       - debug
@@ -1934,15 +1932,15 @@ packages:
     dev: false
 
   /@dnt/theme/0.0.1-alpha.0:
-    resolution: {integrity: sha512-Zwhfy/rzsTkznwWrsUsVbwCxc1CG4n7SlG4CSz6angZfBmERQ/wetbF516SmPdx7v7pKJ6cEW+jn6UNHHEpj3w==}
+    resolution: {integrity: sha512-E5PcFyR9esu9ygh/g6EOY1D8w6SEKsBM6yCGPKC+iRabJvsLJOJm8oWSoeliVOXtwB92pktCyvrb9EObIjmy0w==}
     dev: false
 
   /@dnt/tsconfig/0.0.1-alpha.0:
-    resolution: {integrity: sha512-2DuFI4kts89AuzZHdk4HqkNEoMNC9wet3p35Zzu9zgdoY21rduM6ieUIpF15FjuwjAHYJxlZfM2gXkao+dWeEA==}
+    resolution: {integrity: sha512-dn7Q6ec+asJOBEJ8UrVjHOyN2r1iN6ipFgWKK52hi0GHNRgE9HeyrAU9c1hD6FeuAX9LrxcawXNzfk8o0u+MGQ==}
     dev: true
 
-  /@dnt/utils/0.0.1-alpha.0:
-    resolution: {integrity: sha512-+6lH2M/hGCTmB/zw3txQChlbGyhCNWJOtzu/6Ptr1JkeoIVEpdrnqZRav6r8H0tASeK/3EV43pD+j863irO3Zg==}
+  /@dnt/utils/0.0.1-alpha.1:
+    resolution: {integrity: sha512-v87xNOQJKn2pCXslgrp+OGxIbWzYXMdgZQTgW4spfTGB83c8WUOQjvRkhx95jBhP+9UtSH0qpHUsOi8OPn6isw==}
     dev: false
 
   /@emotion/hash/0.8.0:
@@ -3861,8 +3859,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /axios/1.5.0:
-    resolution: {integrity: sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==}
+  /axios/1.5.1:
+    resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
