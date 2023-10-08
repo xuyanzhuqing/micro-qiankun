@@ -58,6 +58,7 @@ importers:
       '@babel/plugin-proposal-private-property-in-object': ^7.21.11
       '@craco/craco': ^7.1.0
       '@dnt/axios': ^0.0.1-alpha.3
+      '@dnt/components': ^0.0.2-alpha.0
       '@dnt/theme': ^0.0.1-alpha.0
       '@dnt/tsconfig': ^0.0.1-alpha.0
       '@dnt/utils': ^0.0.1-alpha.1
@@ -86,6 +87,7 @@ importers:
     dependencies:
       '@ant-design/icons': 5.2.6_react-dom@18.2.0+react@18.2.0
       '@dnt/axios': 0.0.1-alpha.3_react@18.2.0
+      '@dnt/components': 0.0.2-alpha.0_react-dom@18.2.0+react@18.2.0
       '@dnt/theme': 0.0.1-alpha.0
       '@dnt/utils': 0.0.1-alpha.1
       '@reduxjs/toolkit': 1.9.6_react-redux@8.1.2+react@18.2.0
@@ -1931,6 +1933,17 @@ packages:
     transitivePeerDependencies:
       - debug
       - react
+    dev: false
+
+  /@dnt/components/0.0.2-alpha.0_react-dom@18.2.0+react@18.2.0:
+    resolution: {integrity: sha512-kwmmYZM6aeXQ4fqNyI1e+nU2YILxGkcg/pQtofbNMkLMW361D+2WIyyA5z8OB5b9K0YDVp6T805DwFpr5IAopw==}
+    engines: {node: '>=18.16'}
+    peerDependencies:
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@dnt/theme/0.0.1-alpha.0:

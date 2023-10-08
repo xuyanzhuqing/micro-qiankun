@@ -1,6 +1,7 @@
 import { getRoutesApiSwr } from "apis/route";
 import { Link } from "react-router-dom";
 import { prefetchApps } from 'qiankun';
+import { Foo } from '@dnt/components'
 
 const App: React.FC = () => {
   const { data, isLoading } = getRoutesApiSwr()
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   return (
     <div>home
       <Link to="/system/sea">to sea</Link>
+      <Foo title="Hello dumi!" />
       <table>
         <tbody>
           {
