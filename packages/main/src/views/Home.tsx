@@ -26,6 +26,7 @@ const App: React.FC = () => {
       <Foo title="Hello dumi!" />
       <h2>{t("Welcome to React")}</h2>
       <h1>{t('add', { ns: 'system' })}</h1>
+      <h1>{t('role', { ns: 'user' })}</h1>
       <Trans i18nKey="welcome">trans</Trans>
       <Calendar fullscreen={false} />
       <table>

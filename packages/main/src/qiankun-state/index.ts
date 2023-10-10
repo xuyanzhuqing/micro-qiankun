@@ -1,5 +1,5 @@
 import { initGlobalState, MicroAppStateActions } from 'qiankun';
-import i18nInstance from '@dnt/locale'
+import i18nInstance from '../i18n'
 
 const state = {
   lng: 'zh_CN'
