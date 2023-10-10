@@ -1,4 +1,4 @@
-工程结构图
+工程结构示意图
 ```mermaid
 flowchart LR
     subgraph nexus
@@ -7,6 +7,7 @@ flowchart LR
     npm_components(&#64dnt/components)
     npm_axios(&#64dnt/axios)
     npm_tsconfig(&#64dnt/tsconfig)
+    npm_locale(&#64dnt/locale)
     scratch-npm-group-.->scratch-npm-proxy
     scratch-npm-proxy-.->scratch-npm-hosted
     scratch-npm-hosted-.->npm_theme
@@ -14,21 +15,54 @@ flowchart LR
     scratch-npm-hosted-.->npm_components
     scratch-npm-hosted-.->npm_axios
     scratch-npm-hosted-.->npm_tsconfig
+    scratch-npm-hosted-.->npm_locale
     end
 
     subgraph /entry
-    /entry/packages/sea-.->scratch-npm-group
-    /entry/packages/main-.->scratch-npm-group
-    /entry/packages/land-.->scratch-npm-group
-    style /entry/packages/main fill:#fff,stroke:#333,stroke-width:1px
+    /packages/sea-.->scratch-npm-group
+    /packages/main-.->scratch-npm-group
+    /packages/land-.->scratch-npm-group
+    style /packages/main fill:#fff,stroke:#333,stroke-width:1px
         subgraph /dnt
         theme-.->scratch-npm-hosted
         utils-.->scratch-npm-hosted
         components-.->scratch-npm-hosted
         axios-.->scratch-npm-hosted
         tsconfig-.->scratch-npm-hosted
+        locale-.->scratch-npm-hosted
         end
     end
+```
+
+npm 依赖示意图
+```mermaid
+flowchart TB
+    subgraph /dnt
+    theme
+    tsconfig
+        subgraph share
+        utils
+        components-->utils
+        components-->axios
+        axios
+        end
+    locale
+    end
+
+    subgraph /entry
+    /packages/sea
+    /packages/main-.->/packages/sea
+    /packages/main-.->/packages/land
+    /packages/land
+    end
+
+    subgraph /
+    localhost:3000
+    end
+
+    share-->locale
+    /entry-->/dnt
+    /-.->/entry
 ```
 
 项目启动脚本
