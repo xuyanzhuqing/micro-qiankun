@@ -11,6 +11,10 @@ import { Dropdown, message, Space } from 'antd';
 import mainCssStyle from './Main.module.scss'
 
 import { logoutApi } from 'apis/auth';
+import microAppStateActions from "qiankun-state";
+
+import { useDispatch } from "react-redux";
+import { changeLngAction } from "store/modules/app";
 
 const items: MenuProps['items'] = [
   {
@@ -24,6 +28,8 @@ const MyIcon = createFromIconfontCN();
 const { Header, Content, Sider } = Layout;
 
 const App: React.FC = memo(() => {
+  const dispatch = useDispatch();
+
   const menus = useAppSelector((state) => {
     return state.login.menus
   })
@@ -54,18 +60,29 @@ const App: React.FC = memo(() => {
   }
 
   const defaultSelected = pathname.slice(1).split('/')
+
+  const changeLanguage = (lng: string) => {
+    microAppStateActions.setGlobalState({ lng })
+    dispatch(changeLngAction(lng))
+  }
   return (
     <Layout>
       <Header className={mainCssStyle.header}>
         <div className="logo" />
-        <Dropdown menu={{ items, onClick }}>
-          <span className={mainCssStyle['color-active']}>
-            <Space>
-              hello
-              <DownOutlined />
-            </Space>
-          </span>
-        </Dropdown>
+        <div className={mainCssStyle.headerRight}>
+          <div>
+            <button onClick={() => changeLanguage("zh_CN")}>简体中文</button>
+            <button onClick={() => changeLanguage("en_GB")}>英式英语</button>
+          </div>
+          <Dropdown menu={{ items, onClick }}>
+            <span className={mainCssStyle['color-active']}>
+              <Space>
+                hello
+                <DownOutlined />
+              </Space>
+            </span>
+          </Dropdown>
+        </div>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">

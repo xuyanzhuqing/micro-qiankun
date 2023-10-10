@@ -2,9 +2,13 @@ import { getRoutesApiSwr } from "apis/route";
 import { Link } from "react-router-dom";
 import { prefetchApps } from 'qiankun';
 import { Foo } from '@dnt/components'
+import { useTranslation, Trans } from "react-i18next";
+import { Calendar, theme } from 'antd';
 
 const App: React.FC = () => {
   const { data, isLoading } = getRoutesApiSwr()
+  const { t } = useTranslation();
+
   if (isLoading) {
     return (
       <div>loading</div>
@@ -20,6 +24,10 @@ const App: React.FC = () => {
     <div>home
       <Link to="/system/sea">to sea</Link>
       <Foo title="Hello dumi!" />
+      <h2>{t("Welcome to React")}</h2>
+      <h1>{t('add', { ns: 'system' })}</h1>
+      <Trans i18nKey="welcome">trans</Trans>
+      <Calendar fullscreen={false} />
       <table>
         <tbody>
           {
