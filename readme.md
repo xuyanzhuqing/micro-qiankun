@@ -2,20 +2,19 @@
 ```mermaid
 flowchart LR
     subgraph nexus
-    npm_theme(&#64dnt/theme)
-    npm_utils(&#64dnt/utils)
-    npm_components(&#64dnt/components)
-    npm_axios(&#64dnt/axios)
-    npm_tsconfig(&#64dnt/tsconfig)
-    npm_locale(&#64dnt/locale)
-    scratch-npm-group-.->scratch-npm-proxy
-    scratch-npm-proxy-.->scratch-npm-hosted
-    scratch-npm-hosted-.->npm_theme
-    scratch-npm-hosted-.->npm_utils
-    scratch-npm-hosted-.->npm_components
-    scratch-npm-hosted-.->npm_axios
-    scratch-npm-hosted-.->npm_tsconfig
-    scratch-npm-hosted-.->npm_locale
+        subgraph scratch-npm-group
+            scratch-npm-proxy
+            scratch-npm-npmjs
+                subgraph scratch-npm-hosted
+                    direction LR
+                    npm_theme(&#64dnt/theme)
+                    npm_utils(&#64dnt/utils)
+                    npm_components(&#64dnt/components)
+                    npm_axios(&#64dnt/axios)
+                    npm_tsconfig(&#64dnt/tsconfig)
+                    npm_locale(&#64dnt/locale)
+                end
+        end
     end
 
     subgraph /entry
@@ -24,12 +23,12 @@ flowchart LR
     /packages/land-.->scratch-npm-group
     style /packages/main fill:#fff,stroke:#333,stroke-width:1px
         subgraph /dnt
-        theme-.->scratch-npm-hosted
-        utils-.->scratch-npm-hosted
-        components-.->scratch-npm-hosted
-        axios-.->scratch-npm-hosted
-        tsconfig-.->scratch-npm-hosted
-        locale-.->scratch-npm-hosted
+        theme-.->npm_theme
+        utils-.->npm_utils
+        components-.->npm_components
+        axios-.->npm_axios
+        tsconfig-.->npm_tsconfig
+        locale-.->npm_locale
         end
     end
 ```
