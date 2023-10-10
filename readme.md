@@ -7,12 +7,12 @@ flowchart LR
             scratch-npm-npmjs
                 subgraph scratch-npm-hosted
                     direction LR
-                    npm_theme(&#64dnt/theme)
-                    npm_utils(&#64dnt/utils)
-                    npm_components(&#64dnt/components)
-                    npm_axios(&#64dnt/axios)
-                    npm_tsconfig(&#64dnt/tsconfig)
-                    npm_locale(&#64dnt/locale)
+                    npm_theme(@dnt/theme)
+                    npm_utils(@dnt/utils)
+                    npm_components(@dnt/components)
+                    npm_axios(@dnt/axios)
+                    npm_tsconfig(@dnt/tsconfig)
+                    npm_locale(@dnt/locale)
                 end
         end
     end
