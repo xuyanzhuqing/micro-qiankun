@@ -10,6 +10,7 @@ importers:
       '@ant-design/icons': ^5.2.6
       '@babel/plugin-proposal-private-property-in-object': ^7.21.11
       '@craco/craco': ^7.1.0
+      '@dnt/locale': ^0.0.1-alpha.0
       '@dnt/theme': ^0.0.1-alpha.0
       '@dnt/tsconfig': ^0.0.1-alpha.0
       '@reduxjs/toolkit': ^1.9.5
@@ -33,6 +34,7 @@ importers:
       web-vitals: ^3.4.0
     dependencies:
       '@ant-design/icons': 5.2.6_react-dom@18.2.0+react@18.2.0
+      '@dnt/locale': 0.0.1-alpha.0_react-dom@18.2.0+react@18.2.0
       '@dnt/theme': 0.0.1-alpha.0
       '@reduxjs/toolkit': 1.9.6_react-redux@8.1.2+react@18.2.0
       antd: 5.9.3_react-dom@18.2.0+react@18.2.0
@@ -65,6 +67,7 @@ importers:
       '@craco/craco': ^7.1.0
       '@dnt/axios': ^0.0.1-alpha.3
       '@dnt/components': ^0.0.2-alpha.0
+      '@dnt/locale': ^0.0.1-alpha.0
       '@dnt/theme': ^0.0.1-alpha.0
       '@dnt/tsconfig': ^0.0.1-alpha.0
       '@dnt/utils': ^0.0.1-alpha.1
@@ -97,6 +100,7 @@ importers:
       '@ant-design/icons': 5.2.6_react-dom@18.2.0+react@18.2.0
       '@dnt/axios': 0.0.1-alpha.3_react@18.2.0
       '@dnt/components': 0.0.2-alpha.0_react-dom@18.2.0+react@18.2.0
+      '@dnt/locale': 0.0.1-alpha.0_react-dom@18.2.0+react@18.2.0
       '@dnt/theme': 0.0.1-alpha.0
       '@dnt/utils': 0.0.1-alpha.1
       '@reduxjs/toolkit': 1.9.6_react-redux@8.1.2+react@18.2.0
@@ -1962,6 +1966,19 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@dnt/locale/0.0.1-alpha.0_react-dom@18.2.0+react@18.2.0:
+    resolution: {integrity: sha512-5UKMdtTca50e3DtpNJ2Mh4grGpvPfNvDwGSTXy1ZOeMclkcf7dBZDIro9qzbvhONSPZxMUdOWMG/fJPwczoLIA==}
+    engines: {node: '>=18.16'}
+    dependencies:
+      i18next: 23.5.1
+      i18next-browser-languagedetector: 7.1.0
+      react-i18next: 13.2.2_28719d408719f1d9b2933757d273d918
+    transitivePeerDependencies:
+      - react
+      - react-dom
+      - react-native
     dev: false
 
   /@dnt/theme/0.0.1-alpha.0:

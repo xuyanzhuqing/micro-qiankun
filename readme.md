@@ -55,13 +55,12 @@ flowchart TB
     /packages/land
     end
 
-    subgraph /
-    localhost:3000
+    subgraph localhost:3000
     end
 
     share-->locale
     /entry-->/dnt
-    /-.->/entry
+    localhost:3000-.->/entry
 ```
 
 项目启动脚本
