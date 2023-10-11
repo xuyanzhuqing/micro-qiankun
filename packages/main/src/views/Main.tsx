@@ -109,7 +109,6 @@ const App: React.FC = memo(() => {
               minHeight: 280,
             }}
           >
-            this is layout
             <Outlet />
           </Content>
         </Layout>
