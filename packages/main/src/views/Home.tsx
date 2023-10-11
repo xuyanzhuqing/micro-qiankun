@@ -1,9 +1,8 @@
 import { getRoutesApiSwr } from "apis/route";
 import { Link } from "react-router-dom";
 import { prefetchApps } from 'qiankun';
-import { Foo } from '@dnt/components'
 import { useTranslation, Trans } from "react-i18next";
-import { Calendar, theme } from 'antd';
+import { Calendar } from 'antd';
 
 const App: React.FC = () => {
   const { data, isLoading } = getRoutesApiSwr()
@@ -23,7 +22,6 @@ const App: React.FC = () => {
   return (
     <div>home
       <Link to="/system/sea">to sea</Link>
-      <Foo title="Hello dumi!" />
       <h2>{t("Welcome to React")}</h2>
       <h1>{t('add', { ns: 'system' })}</h1>
       <h1>{t('role', { ns: 'user' })}</h1>
