@@ -1,9 +1,6 @@
 {
   "name": "entry",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "batch": "pnpm --filter ./packages ",
     "start": "pnpm --filter ./packages run start",
