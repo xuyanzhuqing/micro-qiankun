@@ -1,0 +1,43 @@
+{
+  "name": "@dnt/locale",
+  "version": "0.0.1-alpha.1",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "version:alpha": "npm version prerelease --preid=alpha",
+    "version:beta": "npm version prerelease --preid=alpha",
+    "version:rc": "npm version prerelease --preid=rc",
+    "prepublish:alpha": "npm run version:alpha",
+    "publish:alpha": "npm publish --tag alpha",
+    "prepublish:beta": "npm run version:beta",
+    "publish:beta": "npm publish --tag beta",
+    "prepublish:rc": "npm run version:rc",
+    "publish:rc": "npm publish --tag rc",
+    "git:tag": "git tag $(cat ./package.json | jq -r '.version')"
+  },
+  "files": [
+    "lib/"
+  ],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://git.dnt.com.cn/smartmon/scratch/dnt/locale.git"
+  },
+  "publishConfig": {
+    "registry": "http://172.24.10.157:8081/repository/scratch-npm-hosted"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18.16"
+  },
+  "dependencies": {
+    "i18next": "^23.5.1",
+    "i18next-browser-languagedetector": "^7.1.0",
+    "react-i18next": "^13.2.2"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "name": "@dnt/components",
+  "version": "0.0.2-alpha.2",
+  "description": "A react library developed with dumi",
+  "repository": {
+    "type": "git",
+    "url": "https://git.dnt.com.cn/smartmon/scratch/dnt/utils.git"
+  },
+  "license": "MIT",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "father build",
+    "build:watch": "father dev",
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "doctor": "father doctor",
+    "git:tag": "git tag $(cat ./package.json | jq -r '.version')",
+    "lint": "npm run lint:es && npm run lint:css",
+    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "prepare": "husky install && dumi setup",
+    "prepublishOnly": "father doctor && npm run build",
+    "prepublish:alpha": "npm run version:alpha",
+    "publish:alpha": "npm publish --tag alpha",
+    "prepublish:beta": "npm run version:beta",
+    "publish:beta": "npm publish --tag beta",
+    "prepublish:rc": "npm run version:rc",
+    "publish:rc": "npm publish --tag rc",
+    "start": "npm run dev",
+    "version:alpha": "npm version prerelease --preid=alpha",
+    "version:beta": "npm version prerelease --preid=alpha",
+    "version:rc": "npm version prerelease --preid=rc"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write --no-error-on-unmatched-pattern"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@dnt/locale": "^0.0.1-alpha.0",
+    "antd": "^5.10.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@umijs/lint": "^4.0.0",
+    "dumi": "^2.2.9",
+    "eslint": "^8.23.0",
+    "father": "^4.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "stylelint": "^14.9.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "engines": {
+    "node": ">=18.16"
+  },
+  "publishConfig": {
+    "registry": "http://172.24.10.157:8081/repository/scratch-npm-hosted"
+  },
+  "authors": []
+}

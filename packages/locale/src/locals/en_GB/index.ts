@@ -1,0 +1,2 @@
+export { default as welcome } from './welcome.json'
+export { default as system } from './system.json'
