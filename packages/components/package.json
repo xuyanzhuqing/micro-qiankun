@@ -58,7 +58,7 @@
     ]
   },
   "dependencies": {
-    "@dnt/locale": "^0.0.1-alpha.0",
+    "@dnt/locale": "workspace:*",
     "antd": "^5.10.0"
   },
   "devDependencies": {

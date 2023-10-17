@@ -42,7 +42,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@dnt/utils": "^0.0.1-alpha.0",
+    "@dnt/utils": "workspace:*",
     "axios": "^1.5.0",
     "swr": "^2.2.2"
   },
