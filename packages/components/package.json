@@ -59,7 +59,8 @@
   },
   "dependencies": {
     "@dnt/locale": "workspace:*",
-    "antd": "^5.10.0"
+    "antd": "^5.10.0",
+    "react-i18next": "^13.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

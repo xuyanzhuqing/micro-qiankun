@@ -47,6 +47,7 @@
     "node": ">=18.16"
   },
   "dependencies": {
+    "@jest/globals": "^29.7.0",
     "lodash": "^4.17.21"
   }
 }

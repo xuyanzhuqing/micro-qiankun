@@ -2,6 +2,7 @@
   "name": "entry",
   "private": true,
   "scripts": {
+    "preinstall": "bash ./scripts/preinstall.sh",
     "batch": "pnpm --filter ./packages ",
     "start": "pnpm --filter ./packages run start",
     "pkg": "pnpm --filter ./packages run build",

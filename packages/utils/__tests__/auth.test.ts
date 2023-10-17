@@ -1,5 +1,5 @@
 import { getAuthorization, setAuthorization } from '../src/auth';
-import { describe, expect, it, test, beforeEach, jest } from '@jest/globals';
+import { describe, expect, test, beforeEach } from '@jest/globals';
 
 describe("Set local storage item", () => {
   beforeEach(() => {
