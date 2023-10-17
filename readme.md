@@ -7,12 +7,12 @@ flowchart LR
             scratch-npm-npmjs
                 subgraph scratch-npm-hosted
                     direction LR
-                    npm_theme(@dnt/theme)
-                    npm_utils(@dnt/utils)
-                    npm_components(@dnt/components)
-                    npm_axios(@dnt/axios)
-                    npm_tsconfig(@dnt/tsconfig)
-                    npm_locale(@dnt/locale)
+                    npm_theme(&#dnt/theme)
+                    npm_utils(&#dnt/utils)
+                    npm_components(&#dnt/components)
+                    npm_axios(&#dnt/axios)
+                    npm_tsconfig(&#dnt/tsconfig)
+                    npm_locale(&#dnt/locale)
                 end
         end
     end
@@ -68,6 +68,7 @@ flowchart TB
 # 保存文件至本地 init.sh
 # chmod 770 ./init.sh
 # bash ./init.sh
+npm config set registry http://172.24.10.157:8081/repository/scratch-npm-group
 
 mkdir scratch
 cd ./scratch
