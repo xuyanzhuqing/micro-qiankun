@@ -48,10 +48,10 @@ const App: React.FC = () => {
     )
   }
 
-  prefetchApps((data?.data.content || []).map(v => ({
-    name: v.name,
-    entry: v.entry
-  })))
+  // prefetchApps((data?.data.content || []).map(v => ({
+  //   name: v.name,
+  //   entry: v.entry
+  // })))
 
   return (
     <div>
