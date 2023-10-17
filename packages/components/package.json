@@ -22,7 +22,7 @@
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
     "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "prepare": "husky install && dumi setup",
+    "prepare": "dumi setup",
     "prepublishOnly": "father doctor && npm run build",
     "prepublish:alpha": "npm run version:alpha",
     "publish:alpha": "npm publish --tag alpha",
