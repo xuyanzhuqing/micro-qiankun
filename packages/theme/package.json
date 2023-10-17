@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"echo 'theme updated'\"",
     "build": "tsc",
     "version:alpha": "npm version prerelease --preid=alpha",
     "version:beta": "npm version prerelease --preid=alpha",
@@ -30,6 +31,7 @@
     "registry": "http://172.24.10.157:8081/repository/scratch-npm-hosted"
   },
   "devDependencies": {
+    "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2"
   },
   "engines": {
