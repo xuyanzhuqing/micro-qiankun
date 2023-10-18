@@ -1,0 +1,9 @@
+{
+  "extends": "@dnt/tsconfig/index.json",
+  "include": [
+    "src"
+  ],
+  "compilerOptions": {
+    "baseUrl": "src"
+  }
+}
