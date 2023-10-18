@@ -1,6 +1,5 @@
 import { getRoutesApiSwr } from "apis/route";
 import { Link } from "react-router-dom";
-import { prefetchApps } from 'qiankun';
 import { useTranslation, Trans } from "react-i18next";
 import { Pagination, Card, Space } from 'antd';
 import { Page } from '@dnt/components'
@@ -47,11 +46,6 @@ const App: React.FC = () => {
       <div>loading</div>
     )
   }
-
-  // prefetchApps((data?.data.content || []).map(v => ({
-  //   name: v.name,
-  //   entry: v.entry
-  // })))
 
   return (
     <div>

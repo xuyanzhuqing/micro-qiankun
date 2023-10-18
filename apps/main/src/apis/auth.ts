@@ -1,4 +1,4 @@
-import { createAxios } from "@dnt/axios/lib";
+import { createAxios } from "@dnt/axios";
 import { LoginApiReq, LoginApiRes, LogoutApiRes } from "./types/auth";
 
 export const loginApi = (data: LoginApiReq) => createAxios<LoginApiRes>({

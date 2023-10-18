@@ -31,7 +31,7 @@ const App: React.FC = () => {
         dispatch(changeMenusAction(makeMenus(res.data.content)));
         navigate("/home");
       })
-    }).catch(err => {
+    }).catch((err: any) => {
       console.info(err)
     })
   };

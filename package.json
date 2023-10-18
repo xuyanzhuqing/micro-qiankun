@@ -2,8 +2,8 @@
   "name": "entry",
   "private": true,
   "scripts": {
-    "postinstall": "pnpm batch:pkg run build",
-    "dev": "pnpm start:pkg & pnpm start:app",
+    "postinstall": "pnpm build:pkg",
+    "dev": "pnpm build:pkg && pnpm start:pkg & pnpm start:app",
     "start:app": "pnpm batch:app run start",
     "start:pkg": "pnpm batch:pkg run dev",
     "build": "pnpm build:pkg && pnpm build:app && pnpm postbuild",
