@@ -1,6 +1,6 @@
 ```bash
-pnpm preinstall
+pnpm install
 
-pnpm start --filter main
+pnpm dev
 
 ```
