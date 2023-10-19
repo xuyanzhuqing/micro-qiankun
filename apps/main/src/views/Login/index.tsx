@@ -8,7 +8,7 @@ import { changeMenusAction } from "store/modules/login";
 import { setAuthorization } from '@dnt/utils/lib';
 import { getRoutesApi } from 'apis/route';
 import { registerMicroApps } from 'qiankun';
-import { makeMenus } from './data';
+import { makeMenus, mockRoutes } from 'mock/routes';
 const isPro = process.env.NODE_ENV === 'production'
 
 const App: React.FC = () => {
@@ -17,23 +17,27 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    console.info(formRef)
-    const modal = formRef?.current?.getFieldsValue()
-    loginApi(modal).then(res => {
-      if (res.data.code !== 200) {
-        return
-      }
-      // 这里调用的是刚刚上面redux导出的函数
-      setAuthorization(res.data.content)
-      // 获取菜单
-      getRoutesApi({ mode: isPro ? 1 : 0 }).then(res => {
-        registerMicroApps(res.data.content)
-        dispatch(changeMenusAction(makeMenus(res.data.content)));
-        navigate("/home");
-      })
-    }).catch((err: any) => {
-      console.info(err)
-    })
+    // console.info(formRef)
+    // const modal = formRef?.current?.getFieldsValue()
+    // loginApi(modal).then(res => {
+    //   if (res.data.code !== 200) {
+    //     return
+    //   }
+    //   // 这里调用的是刚刚上面redux导出的函数
+    //   setAuthorization(res.data.content)
+    //   // 获取菜单
+    //   getRoutesApi({ mode: isPro ? 1 : 0 }).then(res => {
+    //     registerMicroApps(res.data.content)
+    //     dispatch(changeMenusAction(makeMenus(res.data.content)));
+    //     navigate("/home");
+    //   })
+    // }).catch((err: any) => {
+    //   console.info(err)
+    // })
+
+    registerMicroApps(mockRoutes)
+    dispatch(changeMenusAction(makeMenus(mockRoutes)));
+    navigate("/home");
   };
 
   const onFinishFailed = (errorInfo: any) => {

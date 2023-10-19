@@ -2,40 +2,33 @@ import React from "react";
 import { RouteObject, redirect } from "react-router-dom";
 
 // 路由懒加载
+import Micro from '_qiankun/Micro'
+const Main = React.lazy(() => import('views/Main'));
 const Login = React.lazy(() => import('views/Login'));
 const Home = React.lazy(() => import('views/Home'));
-const Main = React.lazy(() => import('views/Main'));
-const Micro = React.lazy(() => import('views/Micro'));
 
 const routes: RouteObject[] = [
   {
     path: "/",
     id: "root",
-    loader: async () => {
-      throw redirect('/login')
-    }
-  },
-  {
-    path: "/home",
-    id: "home",
     element: <Main />,
+    loader: () => {
+      if (!localStorage.getItem('menus')) {
+        throw redirect('/login')
+      }
+      return null
+    },
     children: [
       {
-        path: '',
+        path: "home",
+        id: "home",
         element: <Home />
-      }
-    ]
-  },
-  {
-    path: '/system',
-    id: "system",
-    element: <Main />,
-    children: [
+      },
       {
-        path: ':id',
-        id: 'micro',
+        path: 'system/:id',
+        id: "system",
         element: <Micro />
-      }
+      },
     ]
   },
   // qiankun-boot-injector

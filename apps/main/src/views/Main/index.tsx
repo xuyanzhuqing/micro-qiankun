@@ -8,10 +8,10 @@ import { SelectEventHandler } from 'rc-menu/lib/interface';
 
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, message, Space } from 'antd';
-import mainCssStyle from './Main.module.scss'
+import mainCssStyle from './index.module.scss'
 
 import { logoutApi } from 'apis/auth';
-import microAppStateActions from "qiankun-state";
+import microAppStateActions from "_qiankun";
 
 import { useDispatch } from "react-redux";
 import { changeLngAction } from "store/modules/app";
@@ -48,11 +48,12 @@ const App: React.FC = memo(() => {
 
   const onClick: MenuProps['onClick'] = ({ key }) => {
     message.info(`Click on item ${key}`);
-    logoutApi().then(res => {
-      if (res.data.code === 200) {
-        navigate('/login')
-      }
-    })
+    navigate('/login')
+    // logoutApi().then(res => {
+    //   if (res.data.code === 200) {
+    //     navigate('/login')
+    //   }
+    // })
   };
 
   const onSelect: SelectEventHandler = (item) => {
@@ -96,10 +97,14 @@ const App: React.FC = memo(() => {
           />
         </Sider>
         <Layout style={{ padding: '0 24px 24px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
+          <Breadcrumb
+            style={{ margin: '16px 0' }}
+            items={[
+              { title: 'Home' },
+              { title: 'List' },
+              { title: 'App' },
+            ]}
+          >
           </Breadcrumb>
           <Content
             className="site-layout-background"

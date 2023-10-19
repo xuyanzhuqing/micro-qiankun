@@ -8,6 +8,7 @@ import theme from '@dnt/theme/lib/index'
 import { useAppSelector } from 'store/hooks'
 import zh_CN from 'antd/locale/zh_CN'
 import en_GB from 'antd/locale/en_GB'
+import Fullback from 'components/Fullback'
 
 const localeMap: any = {
   zh_CN,
@@ -27,8 +28,7 @@ const App = () => {
       setLocale(undefined)
     }
   }, [language])
-
-  return <Suspense fallback={<p></p>}>
+  return <Suspense fallback={<Fullback />}>
     <ConfigProvider
       locale={locale}
       theme={{
