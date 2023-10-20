@@ -10,8 +10,8 @@
     "postbuild": "mv ./apps/main/build ./ && mkdir -p ./build/child",
     "build:pkg": "pnpm batch:pkg run build",
     "build:app": "pnpm batch:app run build",
-    "batch:pkg": "pnpm --filter './packages/**' ",
-    "batch:app": "pnpm --filter './apps/**' ",
+    "batch:pkg": "pnpm --filter '@dnt/*' ",
+    "batch:app": "pnpm --filter '@app/*' ",
     "nginx:test": "$(which nginx) -t -c $(pwd)/nginx.conf",
     "nginx:start": "pnpm build && $(which nginx) -c $(pwd)/nginx.conf",
     "nginx:stop": "$(which nginx) -s stop"
