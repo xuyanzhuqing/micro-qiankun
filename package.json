@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "pnpm build:pkg",
-    "dev": "pnpm build:pkg && pnpm start:pkg & pnpm start:app",
+    "dev": "pnpm build:pkg && pnpm start:app & pnpm start:pkg",
     "start:app": "pnpm batch:app run start",
     "start:pkg": "pnpm batch:pkg run dev",
     "build": "pnpm build:pkg && pnpm build:app && pnpm postbuild",
