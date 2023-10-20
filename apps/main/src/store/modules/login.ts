@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { MenuProps } from "antd";
 import { DntPureMenuProps } from 'mock/routes'
 // 这里统一加载缓存的一些数据
 export const loadLocalLogin = createAsyncThunk(

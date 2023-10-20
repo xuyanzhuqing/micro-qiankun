@@ -1,13 +1,13 @@
 import { Button, Checkbox, Form, Input } from 'antd';
 import { FormInstance } from 'antd/es/form/Form';
-import { loginApi } from 'apis/auth';
+// import { loginApi } from 'apis/auth';
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeMenusAction } from "store/modules/login";
-import { setAuthorization } from '@dnt/utils/lib';
-import { getRoutesApi } from 'apis/route';
-import { registerMicroApps } from 'qiankun';
+// import { setAuthorization } from '@dnt/utils/lib';
+// import { getRoutesApi } from 'apis/route';
+// import { registerMicroApps } from 'qiankun';
 import { mockMenusApi, dntMicroMenuBuilder } from 'mock/routes';
 const isPro = process.env.NODE_ENV === 'production'
 

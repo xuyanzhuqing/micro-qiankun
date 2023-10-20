@@ -5,7 +5,7 @@ import { RouteObject, redirect } from "react-router-dom";
 import Micro from '_qiankun/Micro'
 import { mockMenusApi } from 'mock/routes'
 
-const Main = React.lazy(() => import('views/Main'));
+// const Main = React.lazy(() => import('views/Main'));
 const Layout = React.lazy(() => import('views/Layout'));
 const Login = React.lazy(() => import('views/Login'));
 const Home = React.lazy(() => import('views/Home'));

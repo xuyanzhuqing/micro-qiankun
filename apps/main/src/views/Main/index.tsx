@@ -10,7 +10,6 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, message, Space } from 'antd';
 import mainCssStyle from './index.module.scss'
 
-import { logoutApi } from 'apis/auth';
 import microAppStateActions from "_qiankun";
 
 import { useDispatch } from "react-redux";
@@ -49,11 +48,6 @@ const App: React.FC = memo(() => {
   const onClick: MenuProps['onClick'] = ({ key }) => {
     message.info(`Click on item ${key}`);
     navigate('/login')
-    // logoutApi().then(res => {
-    //   if (res.data.code === 200) {
-    //     navigate('/login')
-    //   }
-    // })
   };
 
   const onSelect: SelectEventHandler = (item) => {

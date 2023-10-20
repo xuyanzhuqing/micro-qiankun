@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "npx eslint ./src",
-    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"echo 'axios updated'\"",
+    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"echo 'axios updated'\" --onFailure \"echo axios composing exited\"",
     "build": "tsc",
     "preversion": "npm run build",
     "jest": "jest",

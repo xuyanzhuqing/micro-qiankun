@@ -1,16 +1,10 @@
 import {
-  CrownOutlined,
   InfoCircleOutlined,
   LogoutOutlined,
-  MergeCellsOutlined,
-  QuestionCircleOutlined,
-  TabletOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import { PageContainer, ProCard, ProLayout } from '@ant-design/pro-components';
-import { Button, Dropdown, Result } from 'antd';
-import { useEffect, useState } from 'react';
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Dropdown } from 'antd';
+import { Outlet, useNavigate } from "react-router-dom";
 import _defaultProps from './_defaultProps'
 import { useImmer } from 'use-immer';
 import { dntMenuBuilder, mockMenusApi } from 'mock/routes'
