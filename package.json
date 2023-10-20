@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "pnpm build:pkg",
-    "dev": "pnpm build:pkg && pnpm start:app & pnpm start:pkg",
+    "dev": "gulp start",
     "start:app": "pnpm batch:app run start",
     "start:pkg": "pnpm batch:pkg run dev",
     "build": "pnpm build:pkg && pnpm build:app && pnpm postbuild",
@@ -23,5 +23,10 @@
   "engines": {
     "node": ">=18.16",
     "pnpm": ">=6.11.0"
+  },
+  "devDependencies": {
+    "cross-spawn": "^7.0.3",
+    "gulp": "^4.0.2",
+    "shelljs": "^0.8.5"
   }
 }
