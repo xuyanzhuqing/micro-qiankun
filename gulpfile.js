@@ -1,12 +1,12 @@
 const { series, parallel } = require('gulp');
 const spawn = require('cross-spawn');
-var shell = require('shelljs');
+const shell = require('shelljs');
 
 const command = function (pkgName, cmd = 'build') {
   return () => spawn('pnpm', ['--filter', pkgName, cmd], { stdio: 'inherit' })
 }
 
-function runPkg(cmd = 'build') {
+function runPkg(cmd) {
   return [
     command('@dnt/utils', cmd),
     command('@dnt/locale', cmd),
@@ -16,10 +16,27 @@ function runPkg(cmd = 'build') {
   ]
 }
 
-function startApp(cb) {
-  return spawn('pnpm', ['start:app'], { stdio: 'inherit' })
+function runApp(cmd) {
+  return [
+    command('main', cmd),
+    command('rhino', cmd),
+  ]
 }
 
-exports.buildPkg = series(...runPkg())
+exports.devApp = parallel(...runApp('start'))
 
-exports.dev = series(...runPkg(), parallel(...runPkg('dev'), startApp))
+exports.devPkg = parallel(...runPkg('dev'))
+
+exports.dev = series(...runPkg('build'), parallel(...runPkg('dev'), ...runApp('start')))
+
+exports.buildPkg = series(...runPkg('build'))
+
+exports.buildApp = parallel(...runApp('build'))
+
+// 打包之后制作安装包
+exports.postBuild = series(
+  cb => { shell.rm('-rf', './build'); cb() },
+  cb => { shell.cp('-r', './apps/main/build', './build'); cb() },
+  cb => { shell.mkdir('-p', './build/child'); cb() },
+  cb => { shell.cp('-r', './apps/rhino/build', './build/child/rhino/'); cb() },
+)

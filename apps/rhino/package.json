@@ -1,5 +1,5 @@
 {
-  "name": "@app/rhino",
+  "name": "rhino",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
