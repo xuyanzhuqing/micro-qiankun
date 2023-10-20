@@ -15,8 +15,9 @@ const localeMap: any = {
   en_GB
 }
 
+const router = createBrowserRouter(routes)
+
 const App = () => {
-  const router = createBrowserRouter(routes)
   const language = useAppSelector(state => state.app.language)
   let [locale, setLocale] = useState(undefined)
 

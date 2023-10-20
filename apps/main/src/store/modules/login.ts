@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { MenuProps } from "antd";
+import { DntPureMenuProps } from 'mock/routes'
 // 这里统一加载缓存的一些数据
 export const loadLocalLogin = createAsyncThunk(
   "login/loadLocalLogin",
@@ -12,7 +13,7 @@ export const loadLocalLogin = createAsyncThunk(
 );
 
 interface LoginState {
-  menus: MenuProps['items']
+  menus: DntPureMenuProps[]
 }
 
 const initialState: LoginState = {
@@ -23,7 +24,7 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    changeMenusAction(state, action: PayloadAction<MenuProps['items']>) {
+    changeMenusAction(state, action: PayloadAction<DntPureMenuProps[]>) {
       // 把数据存到redux里面，有点类似vuex
       state.menus = action.payload;
       localStorage.setItem("menus", JSON.stringify(action.payload));

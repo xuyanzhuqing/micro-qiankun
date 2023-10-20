@@ -8,7 +8,7 @@ import { changeMenusAction } from "store/modules/login";
 import { setAuthorization } from '@dnt/utils/lib';
 import { getRoutesApi } from 'apis/route';
 import { registerMicroApps } from 'qiankun';
-import { makeMenus, mockRoutes } from 'mock/routes';
+import { mockMenusApi, dntMicroMenuBuilder } from 'mock/routes';
 const isPro = process.env.NODE_ENV === 'production'
 
 const App: React.FC = () => {
@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
+  const onFinish = async (values: any) => {
     // console.info(formRef)
     // const modal = formRef?.current?.getFieldsValue()
     // loginApi(modal).then(res => {
@@ -35,8 +35,9 @@ const App: React.FC = () => {
     //   console.info(err)
     // })
 
-    registerMicroApps(mockRoutes)
-    dispatch(changeMenusAction(makeMenus(mockRoutes)));
+    const menus = await mockMenusApi()
+    // registerMicroApps(dntMicroMenuBuilder(menus))
+    dispatch(changeMenusAction(menus));
     navigate("/home");
   };
 

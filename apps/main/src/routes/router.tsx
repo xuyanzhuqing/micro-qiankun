@@ -3,15 +3,19 @@ import { RouteObject, redirect } from "react-router-dom";
 
 // 路由懒加载
 import Micro from '_qiankun/Micro'
+import { mockMenusApi } from 'mock/routes'
+
 const Main = React.lazy(() => import('views/Main'));
+const Layout = React.lazy(() => import('views/Layout'));
 const Login = React.lazy(() => import('views/Login'));
 const Home = React.lazy(() => import('views/Home'));
+const NotFound = React.lazy(() => import('components/NotFound'));
 
 const routes: RouteObject[] = [
   {
     path: "/",
     id: "root",
-    element: <Main />,
+    element: <Layout />,
     loader: () => {
       if (!localStorage.getItem('menus')) {
         throw redirect('/login')
@@ -28,7 +32,7 @@ const routes: RouteObject[] = [
         path: 'system/:id',
         id: "system",
         element: <Micro />
-      },
+      }
     ]
   },
   // qiankun-boot-injector
@@ -37,6 +41,14 @@ const routes: RouteObject[] = [
     id: "login",
     element: <Login />,
   },
+  {
+    path: '*',
+    element: <NotFound />
+  }
 ];
 
 export default routes;
+
+mockMenusApi().then(res => {
+
+})
