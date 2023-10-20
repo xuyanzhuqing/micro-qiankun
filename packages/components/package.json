@@ -15,7 +15,7 @@
   "scripts": {
     "build": "father build",
     "build:watch": "father dev",
-    "dev": "dumi dev",
+    "dev": "dumi dev & open http://localhost:8000",
     "docs:build": "dumi build",
     "doctor": "father doctor",
     "git:tag": "git tag $(cat ./package.json | jq -r '.version')",
