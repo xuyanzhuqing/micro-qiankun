@@ -2,25 +2,30 @@ const { series, parallel } = require('gulp');
 const spawn = require('cross-spawn');
 const shell = require('shelljs');
 
+const config = {
+  apps: [
+    'main',
+    'rhino'
+  ],
+  pkgs: [
+    '@dnt/utils',
+    '@dnt/locale',
+    '@dnt/axios',
+    '@dnt/theme',
+    '@dnt/components'
+  ]
+}
+
 const command = function (pkgName, cmd = 'build') {
   return () => spawn('pnpm', ['--filter', pkgName, cmd], { stdio: 'inherit' })
 }
 
 function runPkg(cmd) {
-  return [
-    command('@dnt/utils', cmd),
-    command('@dnt/locale', cmd),
-    command('@dnt/axios', cmd),
-    command('@dnt/theme', cmd),
-    command('@dnt/components', cmd),
-  ]
+  return config.pkgs.map(pkg => command(pkg, cmd))
 }
 
 function runApp(cmd) {
-  return [
-    command('main', cmd),
-    command('rhino', cmd),
-  ]
+  return config.apps.map(pkg => command(pkg, cmd))
 }
 
 exports.devApp = parallel(...runApp('start'))
