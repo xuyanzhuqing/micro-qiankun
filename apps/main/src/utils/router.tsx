@@ -52,16 +52,20 @@ export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route
 // 构建微服务注册所需信息
 export const dntMicroMenuBuilder = (menus: DntPureMenuProps[], pathname: string): RegistrableApp<ObjectType>[] => {
   const namespace = menus.find(menu => pathname.startsWith(menu.path))
+  const microConfig: any = process.env.microConfig
 
   if (namespace) {
     const res = namespace.routes?.filter(v => v.element.endsWith('Micro')) || []
     const defaultMicroDir = '/child'
-    return res.map(v => ({
-      name: v.key,
-      entry: isPro ? `/${defaultMicroDir}/${v.path}/` : "//localhost:3001",
-      container: '#container',
-      activeRule: [namespace.path, v.path].join('/'),
-    }))
+    return res.map(v => {
+      const devPort = microConfig.find((micro: any) => micro.name === v.path).port
+      return {
+        name: v.key,
+        entry: isPro ? `/${defaultMicroDir}/${v.path}/` : `//localhost:${devPort}`,
+        container: '#container',
+        activeRule: [namespace.path, v.path].join('/'),
+      }
+    })
   }
   return []
 }
