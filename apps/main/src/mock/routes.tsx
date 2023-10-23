@@ -1,22 +1,4 @@
-import type { ProLayoutProps } from '@ant-design/pro-components';
-import { Language } from '@dnt/locale';
-import { ObjectType, RegistrableApp } from 'qiankun';
-import { RouteObject } from 'react-router-dom';
-
-const isPro = process.env.NODE_ENV === 'production'
-interface DntMicroMenuProps {
-  container: string;
-  entry: string;
-}
-
-export interface DntPureMenuProps {
-  path: string;
-  key: string;
-  lang: Record<Language, string>;
-  icon?: string;
-  routes?: Array<DntMicroMenuProps & DntPureMenuProps | DntPureMenuProps>;
-  isMicRo?: 1 | 0;
-}
+import { DntPureMenuProps } from 'routes/type';
 
 //模拟后端返回数据
 export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
@@ -29,7 +11,8 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
           en_GB: 'Home',
           zh_CN: '首页'
         },
-        icon: 'ss1',
+        icon: 'my-icon-aixin',
+        element: 'Home'
       },
       {
         path: '/system',
@@ -38,7 +21,8 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
           en_GB: 'system',
           zh_CN: '系统配置'
         },
-        icon: 'sss',
+        icon: 'my-icon-aixin',
+        element: 'Outlet',
         routes: [
           {
             path: 'rhino',
@@ -47,10 +31,9 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
               en_GB: 'rhino',
               zh_CN: '犀牛'
             },
-            icon: 'xxx',
             "entry": "/child/rhino/",
             "container": "#container",
-            isMicRo: 1,
+            element: 'Micro'
           },
           {
             path: 'hippo',
@@ -59,8 +42,7 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
               en_GB: 'hippo',
               zh_CN: '河马'
             },
-            icon: 'sss',
-            isMicRo: 0,
+            element: 'Hippo'
           }
         ],
       }
@@ -70,48 +52,4 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
       resolve(menus)
     }, interval)
   })
-}
-
-// 构建左侧菜单数据
-export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route'] => {
-
-  const res = menus.map(menu => {
-    return {
-      path: menu.path,
-      name: menu.lang.zh_CN,
-      routes: menu.routes?.map(route => {
-        return {
-          path: route.path,
-          name: route.lang.zh_CN
-        }
-      })
-    }
-  })
-
-  return {
-    path: '/',
-    routes: res
-  }
-}
-
-// 构建微服务注册所需信息
-export const dntMicroMenuBuilder = (menus: DntPureMenuProps[], pathname: string): RegistrableApp<ObjectType>[] => {
-  const namespace = menus.find(menu => pathname.startsWith(menu.path))
-
-  if (namespace) {
-    const res = namespace.routes?.filter(v => v.isMicRo) || []
-    const defaultMicroDir = '/child'
-    return res.map(v => ({
-      name: v.key,
-      entry: isPro ? `/${defaultMicroDir}/${v.path}/` : "//localhost:3001",
-      container: '#container',
-      activeRule: [namespace.path, v.path].join('/'),
-    }))
-  }
-  return []
-}
-
-// 动态构建路由
-export const dntRouteMenuBuilder = (menus: DntPureMenuProps[]): RouteObject[] => {
-  return []
 }

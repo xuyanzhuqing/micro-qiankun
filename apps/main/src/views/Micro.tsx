@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { registerMicroApps, start } from 'qiankun';
-import { dntMicroMenuBuilder } from 'mock/routes'
+import { dntMicroMenuBuilder } from 'utils/router'
 import { useAppSelector } from "store/hooks";
 import { useLocation } from 'react-router-dom';
 

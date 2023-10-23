@@ -7,17 +7,12 @@ import { Dropdown } from 'antd';
 import { Outlet, useNavigate } from "react-router-dom";
 import _defaultProps from './_defaultProps'
 import { useImmer } from 'use-immer';
-import { dntMenuBuilder, mockMenusApi } from 'mock/routes'
-import { useAppSelector } from 'store/hooks';
+import { mockMenusApi } from 'mock/routes'
+import { dntMenuBuilder } from 'utils/router';
 
 export default () => {
   const navigate = useNavigate()
   const [proLayoutProps, setProLayoutProps] = useImmer(_defaultProps);
-  const menus = useAppSelector((state) => {
-    return state.login.menus
-  })
-
-  console.info(menus)
 
   return (
     <ProLayout

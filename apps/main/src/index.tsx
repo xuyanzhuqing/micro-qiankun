@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import store, { setupStore } from "./store";
 import { Provider } from "react-redux";
 import './i18n'
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +18,9 @@ setupStore();
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

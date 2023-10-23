@@ -8,7 +8,8 @@ import { changeMenusAction } from "store/modules/login";
 // import { setAuthorization } from '@dnt/utils/lib';
 // import { getRoutesApi } from 'apis/route';
 // import { registerMicroApps } from 'qiankun';
-import { mockMenusApi, dntMicroMenuBuilder } from 'mock/routes';
+import { mockMenusApi } from 'mock/routes';
+import { dntMicroMenuBuilder } from 'utils/router';
 const isPro = process.env.NODE_ENV === 'production'
 
 const App: React.FC = () => {
