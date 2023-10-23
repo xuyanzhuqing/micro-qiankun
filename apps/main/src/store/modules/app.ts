@@ -1,15 +1,15 @@
+import { Language } from "@dnt/locale";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 
 // 这里统一加载缓存的一些数据
 export const loadLocalApp = createAsyncThunk(
   "app/loadLocalApp",
   (_, { dispatch }) => {
-    const language = localStorage.getItem("language");
   }
 );
 
 const initialState = {
-  language: 'zh_CN'
+  language: Language.zh_CN
 }
 
 const appSlice = createSlice({

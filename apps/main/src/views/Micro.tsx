@@ -11,7 +11,6 @@ const App: React.FC = () => {
 
   let location = useLocation();
 
-  console.info(menus)
   useEffect(() => {
     const apps = dntMicroMenuBuilder(menus, location.pathname)
     registerMicroApps(apps)
@@ -22,7 +21,7 @@ const App: React.FC = () => {
     return () => {
       window.qiankunStarted = false;
     }
-  }, [location])
+  }, [location, menus])
 
   return (
     <div id="container"></div>

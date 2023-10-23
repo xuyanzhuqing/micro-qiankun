@@ -10,7 +10,7 @@ import { useImmer } from 'use-immer';
 import { mockMenusApi } from 'mock/routes'
 import { dntMenuBuilder } from 'utils/router';
 
-export default () => {
+const Layout = () => {
   const navigate = useNavigate()
   const [proLayoutProps, setProLayoutProps] = useImmer(_defaultProps);
 
@@ -67,7 +67,7 @@ export default () => {
       }}
       onMenuHeaderClick={(e) => console.log(e)}
       menuItemRender={(item, dom) => (
-        <a
+        <div
           onClick={() => {
             setProLayoutProps(props => {
               if (props.location) {
@@ -78,7 +78,7 @@ export default () => {
           }}
         >
           {dom}
-        </a>
+        </div>
       )}
     >
       <PageContainer title={false}>
@@ -89,3 +89,5 @@ export default () => {
     </ProLayout>
   );
 };
+
+export default Layout

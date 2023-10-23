@@ -1,12 +1,11 @@
 
 import { createFromIconfontCN } from '@ant-design/icons';
 import type { ProLayoutProps } from '@ant-design/pro-components';
-import { Language } from '@dnt/locale';
 import loadable from '@loadable/component';
 import Fullback from 'components/Fullback';
 import { ObjectType, RegistrableApp } from 'qiankun';
 import { Outlet, RouteObject } from 'react-router-dom';
-import { routes, DntMicroMenuProps, DntPureMenuProps } from 'routes/index'
+import { routes, DntPureMenuProps } from 'routes/index'
 
 const MyIcon = createFromIconfontCN();
 

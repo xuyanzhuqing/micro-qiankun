@@ -14,6 +14,7 @@ import microAppStateActions from "_qiankun";
 
 import { useDispatch } from "react-redux";
 import { changeLngAction } from "store/modules/app";
+import { Language } from '@dnt/locale';
 
 const items: MenuProps['items'] = [
   {
@@ -56,7 +57,7 @@ const App: React.FC = memo(() => {
 
   const defaultSelected = pathname.slice(1).split('/')
 
-  const changeLanguage = (lng: string) => {
+  const changeLanguage = (lng: Language) => {
     microAppStateActions.setGlobalState({ lng })
     dispatch(changeLngAction(lng))
   }
@@ -66,8 +67,8 @@ const App: React.FC = memo(() => {
         <div className="logo" />
         <div className={mainCssStyle.headerRight}>
           <div>
-            <button onClick={() => changeLanguage("zh_CN")}>简体中文</button>
-            <button onClick={() => changeLanguage("en_GB")}>英式英语</button>
+            <button onClick={() => changeLanguage(Language.zh_CN)}>简体中文</button>
+            <button onClick={() => changeLanguage(Language.en_GB)}>英式英语</button>
           </div>
           <Dropdown menu={{ items, onClick }}>
             <span className={mainCssStyle['color-active']}>
