@@ -12,4 +12,6 @@ export interface DntPureMenuProps {
   icon?: string;
   routes?: Array<DntMicroMenuProps & DntPureMenuProps | DntPureMenuProps>;
   element: string;
+  // TODO： 权限设计
+  code?: string;
 }
