@@ -12,6 +12,10 @@ export default {
       "colorHeaderTitle": "#ffffff",
       "colorBgRightActionsItemHover": 'rgba(0,0,0,0.06)',
       "colorTextRightActionsItem": 'rgba(255,255,255,0.65)',
+    },
+    "sider": {
+      "colorTextMenu": "#474c63",
+      "colorMenuBackground": "#ffffff",
     }
   }
 }
