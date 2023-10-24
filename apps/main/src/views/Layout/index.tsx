@@ -1,6 +1,5 @@
 import {
   GlobalOutlined,
-  InfoCircleOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
 import { PageContainer, ProCard, ProLayout } from '@ant-design/pro-components';
@@ -17,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { getI18n, useTranslation } from 'react-i18next';
 import { localResources } from '../../i18n'
 import { useAppSelector } from 'store/hooks';
+import theme from '@dnt/theme/lib/index'
 
 const Layout = () => {
   const navigate = useNavigate()
@@ -37,11 +37,12 @@ const Layout = () => {
 
   return (
     <ProLayout
+      token={theme.basicTheme.proLayout}
       {...proLayoutProps}
       avatarProps={{
         src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
         size: 'small',
-        title: '七妮妮',
+        title: 'Admin',
         render: (props, dom) => {
           return (
             <Dropdown
@@ -89,7 +90,6 @@ const Layout = () => {
         >
           <GlobalOutlined />
         </Dropdown>,
-        <InfoCircleOutlined key="InfoCircleOutlined" />,
       ]}
       menuFooterRender={(props) => {
         if (props?.collapsed) return undefined;
