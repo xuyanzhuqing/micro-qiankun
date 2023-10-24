@@ -13,7 +13,16 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const apps = dntMicroMenuBuilder(menus, location.pathname)
-    registerMicroApps(apps)
+    // 传递菜单信息到各个微应用
+    const mixedProps = apps.map(app => {
+      app.props = {
+        menus: Object.freeze(menus)
+      }
+      return app
+    })
+
+    registerMicroApps(mixedProps)
+
     start({
       sandbox: false
     })

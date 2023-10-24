@@ -42,6 +42,8 @@ export async function mount(props: any) {
   console.log('[react16] props from main framework', props);
   // 默认设置多语言
   i18n.changeLanguage(localStorage.getItem('i18nextLng') || 'zh_CN')
+
+  // props.setGlobalState
   // 监听多语言切换
   props.onGlobalStateChange((state: any, prev: any) => {
     // state: 变更后的状态; prev 变更前的状态
