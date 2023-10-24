@@ -1,4 +1,5 @@
 import {
+  GlobalOutlined,
   InfoCircleOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
@@ -9,10 +10,30 @@ import _defaultProps from './_defaultProps'
 import { useImmer } from 'use-immer';
 import { mockMenusApi } from 'mock/routes'
 import { dntMenuBuilder } from 'utils/router';
+import { Language } from '@dnt/locale';
+import microAppStateActions from '_qiankun';
+import { changeLngAction } from 'store/modules/app';
+import { useDispatch } from "react-redux";
+import { getI18n, useTranslation } from 'react-i18next';
+import { localResources } from '../../i18n'
+import { useAppSelector } from 'store/hooks';
 
 const Layout = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+
   const [proLayoutProps, setProLayoutProps] = useImmer(_defaultProps);
+  const changeLanguage = (lng: Language) => {
+    microAppStateActions.setGlobalState({ lng })
+    dispatch(changeLngAction(lng))
+  }
+
+  const menus = useAppSelector((state) => {
+    return state.login.menus
+  })
+
+  const { t } = useTranslation();
+  const i18n = getI18n()
 
   return (
     <ProLayout
@@ -29,7 +50,7 @@ const Layout = () => {
                   {
                     key: 'logout',
                     icon: <LogoutOutlined />,
-                    label: '退出登录',
+                    label: t('logout'),
                     onClick: () => {
                       navigate('/login')
                     }
@@ -43,12 +64,31 @@ const Layout = () => {
         },
       }}
       menu={{
+        locale: true,
         request: async () => {
           const res = await mockMenusApi().then(dntMenuBuilder) as any
           return res.routes
         }
       }}
       actionsRender={() => [
+        <Dropdown
+          menu={{
+            items: [
+              {
+                key: Language.zh_CN,
+                label: '中',
+                onClick: () => changeLanguage(Language.zh_CN)
+              },
+              {
+                key: Language.en_GB,
+                label: 'En',
+                onClick: () => changeLanguage(Language.en_GB)
+              },
+            ],
+          }}
+        >
+          <GlobalOutlined />
+        </Dropdown>,
         <InfoCircleOutlined key="InfoCircleOutlined" />,
       ]}
       menuFooterRender={(props) => {
@@ -61,25 +101,38 @@ const Layout = () => {
               paddingBlockStart: 12,
             }}
           >
-            Power by Ant Design
+            Power by DNT
           </p>
         );
       }}
       onMenuHeaderClick={(e) => console.log(e)}
-      menuItemRender={(item, dom) => (
-        <div
-          onClick={() => {
-            setProLayoutProps(props => {
-              if (props.location) {
-                props.location.pathname = item.path || '/home'
-                navigate(props.location.pathname)
-              }
-            })
-          }}
-        >
-          {dom}
-        </div>
-      )}
+      menuDataRender={items => {
+        return items.map(item => {
+          item.name = item.lang[i18n.language]
+          item.children = (item.children || []).map(child => {
+            child.name = child.lang[i18n.language]
+            return child
+          })
+          return item
+        })
+      }}
+      menuItemRender={(item, dom) => {
+        return (
+          <div
+            onClick={() => {
+              console.info(dom)
+              setProLayoutProps(props => {
+                if (props.location) {
+                  props.location.pathname = item.path || '/home'
+                  navigate(props.location.pathname)
+                }
+              })
+            }}
+          >
+            {dom}
+          </div>
+        )
+      }}
     >
       <PageContainer title={false}>
         <ProCard>

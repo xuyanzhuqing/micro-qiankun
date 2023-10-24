@@ -1,7 +1,7 @@
 import type { ProLayoutProps } from '@ant-design/pro-components';
 
 const proLayoutProps: Partial<ProLayoutProps> = {
-  title: 'dnt',
+  title: 'DNT',
   fixSiderbar: true,
   layout: 'mix',
   splitMenus: false,

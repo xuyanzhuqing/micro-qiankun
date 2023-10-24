@@ -38,20 +38,20 @@ const columns = [
 ];
 
 const App: React.FC = () => {
-  const { data, isLoading } = getRoutesApiSwr()
-  const { t } = useTranslation();
+  // const { data, isLoading } = getRoutesApiSwr()
 
-  if (isLoading) {
-    return (
-      <div>loading</div>
-    )
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div>loading</div>
+  //     )
+  //   }
+  const { t } = useTranslation();
 
   return (
     <div>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
         <Card title="跳转微服务" size="small">
-          <Link to="/system/sea">to sea</Link>
+          <Link to="/system/rhino">to rhino</Link>
         </Card>
         <Card title="多语言" size="small">
           <Space>
@@ -68,7 +68,7 @@ const App: React.FC = () => {
         <Card title="接口调用" size="small">
           <table>
             <tbody>
-              {
+              {/* {
                 (data?.data.content || []).map(data => {
                   return <tr key={data.id}>
                     <td>{data.name}</td>
@@ -76,7 +76,7 @@ const App: React.FC = () => {
                     <td>{data.entry}</td>
                   </tr>
                 })
-              }
+              } */}
             </tbody>
           </table>
         </Card>

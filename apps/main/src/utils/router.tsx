@@ -6,7 +6,6 @@ import Fullback from 'components/Fullback';
 import { ObjectType, RegistrableApp } from 'qiankun';
 import { Outlet, RouteObject } from 'react-router-dom';
 import { routes, DntPureMenuProps } from 'routes/index'
-
 const MyIcon = createFromIconfontCN();
 
 const isPro = process.env.NODE_ENV === 'production'
@@ -27,16 +26,17 @@ export const lazyLoad = (moduleName: string) => {
 
 // 构建左侧菜单数据
 export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route'] => {
-
   const res = menus.map(menu => {
     return {
       path: menu.path,
-      name: menu.lang.zh_CN,
+      name: menu.key,
       icon: menu.icon ? <MyIcon type={menu.icon} /> : null,
+      lang: menu.lang,
       routes: menu.routes?.map(route => {
         return {
           path: route.path,
-          name: route.lang.zh_CN
+          name: route.key,
+          lang: route.lang,
         }
       })
     }
@@ -78,13 +78,13 @@ export const dntRouteMenuBuilder = (menus: DntPureMenuProps[]): RouteObject[] =>
       const children = (menu?.routes || []).map(route => ({
         path: route.path,
         id: route.key,
-        element: lazyLoad(route.element)
+        element: lazyLoad(route.element),
       }))
       return {
         path: menu.path,
         id: menu.key,
         element: lazyLoad(menu.element),
-        children
+        children,
       }
     })
     root.children = newRoutes

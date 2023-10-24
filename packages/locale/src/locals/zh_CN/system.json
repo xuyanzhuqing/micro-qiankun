@@ -8,5 +8,8 @@
   "cancel": "取消",
   "close": "关闭",
   "patch": "更新",
-  "info": "提示"
+  "info": "提示",
+  "exit": "退出",
+  "login": "登录",
+  "logout": "退出登录"
 }

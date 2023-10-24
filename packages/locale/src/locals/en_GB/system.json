@@ -8,5 +8,8 @@
   "cancel": "cancel",
   "close": "close",
   "patch": "patch",
-  "info": "info"
+  "info": "info",
+  "exit": "exit",
+  "login": "login",
+  "logout": "logout"
 }
