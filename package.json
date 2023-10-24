@@ -2,7 +2,6 @@
   "name": "entry",
   "private": true,
   "scripts": {
-    "postinstall": "gulp buildPkg",
     "dev": "gulp dev",
     "dev:app": "gulp devApp",
     "dev:pkg": "gulp devPkg",
