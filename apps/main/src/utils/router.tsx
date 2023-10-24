@@ -60,7 +60,7 @@ export const dntMicroMenuBuilder = (menus: DntPureMenuProps[], pathname: string)
       const devPort = microConfig.find((micro: any) => micro.name === v.path).port
       return {
         name: v.key,
-        entry: isPro ? `/${defaultMicroDir}/${v.path}/` : `//localhost:${devPort}`,
+        entry: isPro ? `${defaultMicroDir}/${v.path}/` : `//localhost:${devPort}`,
         container: '#container',
         activeRule: [namespace.path, v.path].join('/'),
       }
