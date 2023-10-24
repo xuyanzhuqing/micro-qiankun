@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeMenusAction } from "store/modules/login";
 import { mockMenusApi } from 'mock/routes';
+import cssStyle from './index.module.scss'
 
 const App: React.FC = () => {
   const formRef = React.useRef<FormInstance>(null);
@@ -22,7 +23,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Space direction="vertical" size="middle" align='center' style={{ display: 'flex', height: '100%', justifyContent: 'center', marginTop: '-100px' }}>
+    <Space direction="vertical" size="middle" align='center' className={cssStyle.container}>
       <Card>
         <Form
           ref={formRef}
