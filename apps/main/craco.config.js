@@ -2,13 +2,12 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const publicPath = '/'
 const cdn = new Map([
-  ['https://unpkg.com/react@18.2.0/umd/react.production.min.js', ['react', 'React']],
-  ['https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js', ['react-dom/client', 'ReactDOM']]
+  ['https://unpkg.com/react@18/umd/react.development.js', ['react', 'React']],
+  ['https://unpkg.com/react-dom@18/umd/react-dom.development.js', ['react-dom/client', 'ReactDOM']]
 ])
-
 const folderPath = path.join(__dirname, '../')
 const miroConfig = fs.readdirSync(folderPath)
   .map(fileName => {
@@ -33,16 +32,19 @@ module.exports = {
       //     acc[curr[0]] = curr[1]
       //     return acc
       //   }, {})
-      // webpackConfig.externals = {
-      //   react: 'https://unpkg.com/react@18.2.0/umd/react.production.min.js',
-      //   'react-dom': 'https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js'
+
+      // webpackConfig.resolve.alias = {
+      //   'react/jsx-runtime': path.join('/node_module', 'react/jsx-runtime.js'),
+      //   'react/jsx-dev-runtime': path.join('/node_module', 'react/jsx-dev-runtime.js')
       // }
 
       webpackConfig.plugins.push(
         new webpack.DefinePlugin({
           'process.env.cnd': JSON.stringify(Array.from(cdn.keys())),
-          'process.env.microConfig': JSON.stringify(miroConfig)
-        })
+          'process.env.microConfig': JSON.stringify(miroConfig),
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
+        // new BundleAnalyzerPlugin()
       )
 
       // const htmlWebpackPlugin = webpackConfig.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin)

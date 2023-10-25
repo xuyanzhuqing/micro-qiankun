@@ -14,10 +14,12 @@
     "@loadable/component": "^5.15.3",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/user-event": "^13.5.0",
+    "@types/lodash-es": "^4.17.10",
     "antd": "^5.9.3",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
     "install": "^0.13.0",
+    "lodash-es": "^4.17.21",
     "qiankun": "^2.10.13",
     "rc-menu": "^9.12.0",
     "react": "^18.2.0",
@@ -69,7 +71,8 @@
     "@types/react-dom": "^18.2.7",
     "dotenv": "^16.3.1",
     "sass": "^1.66.1",
-    "sass-loader": "^13.3.2"
+    "sass-loader": "^13.3.2",
+    "webpack-bundle-analyzer": "^4.9.1"
   },
   "publishConfig": {
     "registry": "http://localhost:8081/repository/npm-hosted/"
