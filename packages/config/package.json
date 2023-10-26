@@ -1,0 +1,26 @@
+{
+  "name": "@dnt/config",
+  "version": "0.0.0",
+  "description": "share config should only import in main application",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "version:alpha": "npm version prerelease --preid=alpha",
+    "version:beta": "npm version prerelease --preid=alpha",
+    "version:rc": "npm version prerelease --preid=rc",
+    "prepublish:alpha": "npm run version:alpha",
+    "publish:alpha": "npm publish --tag alpha",
+    "prepublish:beta": "npm run version:beta",
+    "publish:beta": "npm publish --tag beta",
+    "prepublish:rc": "npm run version:rc",
+    "publish:rc": "npm publish --tag rc",
+    "git:tag": "git tag $(cat ./package.json | jq -r '.version')"
+  },
+  "author": "",
+  "license": "ISC"
+}
