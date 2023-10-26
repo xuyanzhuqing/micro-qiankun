@@ -14,8 +14,7 @@ import microAppStateActions from '_qiankun';
 import { changeLngAction } from 'store/modules/app';
 import { useDispatch } from "react-redux";
 import { getI18n, useTranslation } from 'react-i18next';
-import { localResources } from '../../i18n'
-import { useAppSelector } from 'store/hooks';
+// import { useAppSelector } from 'store/hooks';
 import theme from '@dnt/theme/lib/index'
 
 const Layout = () => {
@@ -28,9 +27,9 @@ const Layout = () => {
     dispatch(changeLngAction(lng))
   }
 
-  const menus = useAppSelector((state) => {
-    return state.login.menus
-  })
+  // const menus = useAppSelector((state) => {
+  //   return state.login.menus
+  // })
 
   const { t } = useTranslation();
   const i18n = getI18n()
