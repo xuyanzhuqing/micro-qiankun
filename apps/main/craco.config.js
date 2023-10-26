@@ -5,6 +5,18 @@ const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+module.exports = {
+  webpack: {
+    configure: (config, { env, paths }) => {
+      const common = merge(config, webpackCommonEnv(config))
+      if (env === 'development') {
+        return merge(common, webpackDevEnv(config))
+      }
+      return merge(common, webpackProEnv(config))
+    },
+  }
+};
+
 function webpackCommonEnv(config) {
   return {
     plugins: [
@@ -48,12 +60,13 @@ function webpackDevEnv(config) {
 
 function webpackProEnv(config) {
   const cdn = new Map([
-    // ['https://unpkg.com/react@18.2.0/umd/react.production.min.js', ['react', 'React']],
-    // ['https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js', ['react-dom/client', 'ReactDOM']],
-    // ['https://unpkg.com/axios@1.5.1/dist/axios.min.js', ['axios', 'axios']],
-    // ['https://unpkg.com/i18next@23.6.0/i18next.min.js', ['i18next', 'i18next']],
+    ['https://unpkg.com/react@18.2.0/umd/react.production.min.js', ['react', 'React']],
+    ['https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js', ['react-dom', 'ReactDOM']],
+    ['https://unpkg.com/axios@1.5.1/dist/axios.min.js', ['axios', 'axios']],
+    ['https://unpkg.com/i18next@23.6.0/i18next.min.js', ['i18next', 'i18next']],
   ])
 
+  const localCdn = (url) => '/lib/'.concat(url.split('/').pop())
   const externals = Array.from(cdn.values())
     .reduce((acc, curr) => {
       acc[curr[0]] = curr[1]
@@ -61,25 +74,13 @@ function webpackProEnv(config) {
     }, {})
 
   const htmlWebpackPlugin = config.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin)
-  htmlWebpackPlugin.userOptions.jsCdns = Array.from(cdn.keys())
+  htmlWebpackPlugin.userOptions.jsCdns = Array.from(cdn.keys()).map(localCdn)
 
   return {
     externals,
     plugins: [
       htmlWebpackPlugin,
-      // new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin()
     ]
   }
 }
-
-module.exports = {
-  webpack: {
-    configure: (config, { env, paths }) => {
-      const common = merge(config, webpackCommonEnv(config))
-      if (env === 'development') {
-        return merge(common, webpackDevEnv(config))
-      }
-      return merge(common, webpackProEnv(config))
-    },
-  }
-};
