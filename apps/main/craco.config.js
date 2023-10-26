@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { cdns, externals } = require('@dnt/config')
 
 module.exports = {
   webpack: {
@@ -59,28 +60,15 @@ function webpackDevEnv(config) {
 }
 
 function webpackProEnv(config) {
-  const cdn = new Map([
-    ['https://unpkg.com/react@18.2.0/umd/react.production.min.js', ['react', 'React']],
-    ['https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js', ['react-dom', 'ReactDOM']],
-    ['https://unpkg.com/axios@1.5.1/dist/axios.min.js', ['axios', 'axios']],
-    ['https://unpkg.com/i18next@23.6.0/i18next.min.js', ['i18next', 'i18next']],
-  ])
-
   const localCdn = (url) => '/lib/'.concat(url.split('/').pop())
-  const externals = Array.from(cdn.values())
-    .reduce((acc, curr) => {
-      acc[curr[0]] = curr[1]
-      return acc
-    }, {})
 
   const htmlWebpackPlugin = config.plugins.find(plugin => plugin instanceof HtmlWebpackPlugin)
-  htmlWebpackPlugin.userOptions.jsCdns = Array.from(cdn.keys()).map(localCdn)
-
+  htmlWebpackPlugin.userOptions.jsCdns = Array.from(cdns.keys()).map(localCdn)
   return {
     externals,
     plugins: [
       htmlWebpackPlugin,
-      new BundleAnalyzerPlugin()
+      // new BundleAnalyzerPlugin()
     ]
   }
 }

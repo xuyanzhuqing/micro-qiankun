@@ -32,6 +32,9 @@ importers:
       '@dnt/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@dnt/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@dnt/locale':
         specifier: workspace:*
         version: link:../../packages/locale
@@ -168,6 +171,9 @@ importers:
       '@dnt/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@dnt/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@dnt/locale':
         specifier: workspace:*
         version: link:../../packages/locale
@@ -381,6 +387,8 @@ importers:
       stylelint:
         specifier: ^14.9.1
         version: 14.16.1
+
+  packages/config: {}
 
   packages/locale:
     dependencies:

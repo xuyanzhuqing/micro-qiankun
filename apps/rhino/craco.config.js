@@ -1,5 +1,7 @@
 const { name } = require("./package");
 const config = require("dotenv").config();
+const { cdns, externals } = require('@dnt/config')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   plugins: [
@@ -15,6 +17,9 @@ module.exports = {
 
       if (env === "production") {
         config.output.publicPath = "/child/" + name;
+        // 采用主应用加载的第三方库
+        config.externals = externals
+        // config.plugins.push(new BundleAnalyzerPlugin())
       }
       // 不打开浏览器
       process.env["BROWSER"] = "none";

@@ -8,6 +8,7 @@ const config = {
     'rhino'
   ],
   pkgs: [
+    '@dnt/config',
     '@dnt/utils',
     '@dnt/locale',
     '@dnt/axios',
