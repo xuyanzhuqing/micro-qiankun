@@ -2,7 +2,7 @@
 import { createFromIconfontCN } from '@ant-design/icons';
 import type { ProLayoutProps } from '@ant-design/pro-components';
 import loadable from '@loadable/component';
-import Fullback from 'components/Fullback';
+import { Fullback } from '@dnt/components';
 import { ObjectType, RegistrableApp } from 'qiankun';
 import { Outlet, RouteObject } from 'react-router-dom';
 import { routes, DntPureMenuProps } from 'routes/index'

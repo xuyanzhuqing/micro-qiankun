@@ -2,7 +2,7 @@ import { RouteObject, redirect } from "react-router-dom";
 import React from "react";
 import { lazyLoad } from "utils/router";
 
-const NotFound = React.lazy(() => import('components/NotFound'))
+const NotFound = React.lazy(() => import('@dnt/components/dist/NotFound'))
 
 const routes = (): RouteObject[] => [
   {
