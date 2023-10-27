@@ -25,15 +25,26 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
         element: 'Outlet',
         routes: [
           {
-            path: 'rhino',
-            key: 'rhino',
+            path: 'role',
+            key: 'role',
             lang: {
-              en_GB: 'rhino',
-              zh_CN: '犀牛'
+              en_GB: 'role',
+              zh_CN: '角色管理'
             },
-            "entry": "/child/rhino/",
+            "entry": "rhino",
             "container": "#container",
-            element: 'Micro'
+            element: 'Micro',
+          },
+          {
+            path: 'user',
+            key: 'user',
+            lang: {
+              en_GB: 'user',
+              zh_CN: '用户管理'
+            },
+            "entry": "rhino",
+            "container": "#container",
+            element: 'Micro',
           },
           {
             path: 'hippo',

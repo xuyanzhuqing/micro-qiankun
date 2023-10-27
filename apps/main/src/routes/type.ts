@@ -1,17 +1,14 @@
 import { Language } from "@dnt/locale";
 
-export interface DntMicroMenuProps {
-  container: string;
-  entry: string;
-}
-
 export interface DntPureMenuProps {
   path: string;
   key: string;
   lang: Record<Language, string>;
   icon?: string;
-  routes?: Array<DntMicroMenuProps & DntPureMenuProps | DntPureMenuProps>;
+  routes?: DntPureMenuProps[];
   element: string;
   // TODO： 权限设计
   code?: string;
+  container?: string;
+  entry?: string;
 }

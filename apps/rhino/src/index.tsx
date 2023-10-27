@@ -12,13 +12,13 @@ import { BrowserRouter } from "react-router-dom";
 
 let root: ReactDOM.Root
 
-function render(props: { container?: HTMLElement }) {
+function render(props: { container?: HTMLElement, basename?: string }) {
   root = ReactDOM.createRoot(
     props.container ? props.container : document.getElementById('root') as HTMLElement
   );
 
   // @ts-ignore
-  const basename = window.__POWERED_BY_QIANKUN__ ? `/system` : '/'
+  const basename = window.__POWERED_BY_QIANKUN__ ? props.basename : '/'
 
   // TODO: 共享 store
   root.render(
@@ -36,11 +36,11 @@ if (!window.__POWERED_BY_QIANKUN__) {
 }
 
 export async function bootstrap() {
-  console.log('[react16] react app bootstraped');
+  // console.log('[react16] react app bootstraped');
 }
 
 export async function mount(props: any) {
-  console.log('[react16] props from main framework', props);
+  // console.log('[react16] props from main framework', props);
   // 默认设置多语言
   i18n.changeLanguage(localStorage.getItem('i18nextLng') || 'zh_CN')
 

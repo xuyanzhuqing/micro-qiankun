@@ -6,6 +6,7 @@ import { Fullback } from '@dnt/components';
 import { ObjectType, RegistrableApp } from 'qiankun';
 import { Outlet, RouteObject } from 'react-router-dom';
 import { routes, DntPureMenuProps } from 'routes/index'
+import { compact, uniqBy } from 'lodash-es'
 const MyIcon = createFromIconfontCN();
 
 const isPro = process.env.NODE_ENV === 'production'
@@ -23,18 +24,19 @@ export const lazyLoad = (moduleName: string) => {
   return <LoadablePage page={moduleName} />
 };
 
+const makePath = (menu: DntPureMenuProps) => compact([menu.entry, menu.path]).join('/')
 
 // 构建左侧菜单数据
 export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route'] => {
   const res = menus.map(menu => {
     return {
-      path: menu.path,
+      path: makePath(menu),
       name: menu.key,
       icon: menu.icon ? <MyIcon type={menu.icon} /> : null,
       lang: menu.lang,
       routes: menu.routes?.map(route => {
         return {
-          path: route.path,
+          path: makePath(route),
           name: route.key,
           lang: route.lang,
         }
@@ -52,19 +54,22 @@ export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route
 export const dntMicroMenuBuilder = (menus: DntPureMenuProps[], pathname: string): RegistrableApp<ObjectType>[] => {
   const namespace = menus.find(menu => pathname.startsWith(menu.path))
   const microConfig: any = process.env.microConfig
+  const defaultMicroDir = '/child'
 
   if (namespace) {
-    const res = namespace.routes?.filter(v => v.element.endsWith('Micro')) || []
-    const defaultMicroDir = '/child'
-    return res.map(v => {
-      const devPort = microConfig?.find((micro: any) => micro.name === v.path)?.port
+    const routes = namespace.routes?.filter(v => v.element.endsWith('Micro')) || []
+    const uniqueRoutes = uniqBy(routes, 'entry')
+    const res = uniqueRoutes.map(route => {
+      const entry = route.entry || ''
+      const devPort = microConfig?.find((micro: any) => micro.name === entry)?.port
       return {
-        name: v.key,
-        entry: isPro ? `${defaultMicroDir}/${v.path}/` : `//localhost:${devPort}`,
+        name: entry,
+        entry: isPro ? `${defaultMicroDir}/${entry}/` : `//localhost:${devPort}`,
         container: '#container',
-        activeRule: [namespace.path, v.path].join('/'),
+        activeRule: [namespace.path, entry].join('/')
       }
     })
+    return res
   }
   return []
 }
@@ -76,12 +81,12 @@ export const dntRouteMenuBuilder = (menus: DntPureMenuProps[]): RouteObject[] =>
   if (root && root.children) {
     const newRoutes = menus.map(menu => {
       const children = (menu?.routes || []).map(route => ({
-        path: route.path,
+        path: makePath(route),
         id: route.key,
         element: lazyLoad(route.element),
       }))
       return {
-        path: menu.path,
+        path: makePath(menu),
         id: menu.key,
         element: lazyLoad(menu.element),
         children,

@@ -119,7 +119,6 @@ const Layout = () => {
         return (
           <div
             onClick={() => {
-              console.info(dom)
               setProLayoutProps(props => {
                 if (props.location) {
                   props.location.pathname = item.path || '/home'
