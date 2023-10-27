@@ -31,7 +31,7 @@ const App: React.FC = () => {
           colon={false}
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ remember: true }}
+          initialValues={{ remember: true, username: 'admin', password: 'admin' }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
