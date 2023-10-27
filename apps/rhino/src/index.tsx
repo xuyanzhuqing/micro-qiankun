@@ -8,6 +8,7 @@ import { ConfigProvider } from 'antd';
 import { AliasToken } from 'antd/es/theme/interface';
 import theme from '@dnt/theme/lib'
 import i18n from './i18n'
+import { BrowserRouter } from "react-router-dom";
 
 let root: ReactDOM.Root
 
@@ -16,16 +17,16 @@ function render(props: { container?: HTMLElement }) {
     props.container ? props.container : document.getElementById('root') as HTMLElement
   );
 
+  // @ts-ignore
+  const basename = window.__POWERED_BY_QIANKUN__ ? `/system` : '/'
+
+  // TODO: 共享 store
   root.render(
     <React.StrictMode>
-      <ConfigProvider
-        theme={{
-          token: theme.basicTheme as Partial<AliasToken>,
-        }}
-      >
+      <BrowserRouter basename={basename}>
         <App />
-      </ConfigProvider>
-    </React.StrictMode>
+      </BrowserRouter>
+    </React.StrictMode >
   );
 }
 
