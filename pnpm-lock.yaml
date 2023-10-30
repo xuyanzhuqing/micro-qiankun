@@ -388,7 +388,11 @@ importers:
         specifier: ^14.9.1
         version: 14.16.1
 
-  packages/config: {}
+  packages/config:
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
 
   packages/locale:
     dependencies:
