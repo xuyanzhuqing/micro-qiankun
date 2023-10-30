@@ -10,12 +10,13 @@ import { useImmer } from 'use-immer';
 import { mockMenusApi } from 'mock/routes'
 import { dntMenuBuilder } from 'utils/router';
 import { Language } from '@dnt/locale';
-import microAppStateActions from '_qiankun';
+import { storeShared } from '_qiankun';
 import { changeLngAction } from 'store/modules/app';
 import { useDispatch } from "react-redux";
 import { getI18n, useTranslation } from 'react-i18next';
 // import { useAppSelector } from 'store/hooks';
 import theme from '@dnt/theme/lib/index'
+import { EventBusType } from '@dnt/utils/lib/StoreShared';
 
 const Layout = () => {
   const navigate = useNavigate()
@@ -23,8 +24,7 @@ const Layout = () => {
 
   const [proLayoutProps, setProLayoutProps] = useImmer(_defaultProps);
   const changeLanguage = (lng: Language) => {
-    microAppStateActions.setGlobalState({ lng })
-    dispatch(changeLngAction(lng))
+    storeShared.emit(EventBusType.SET_LANGUAGE, { lng })
   }
 
   // const menus = useAppSelector((state) => {

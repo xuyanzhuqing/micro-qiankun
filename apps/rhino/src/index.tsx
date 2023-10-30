@@ -4,12 +4,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ConfigProvider } from 'antd';
-import { AliasToken } from 'antd/es/theme/interface';
-import theme from '@dnt/theme/lib'
 import i18n from './i18n'
 import { BrowserRouter } from "react-router-dom";
-
+import { Provider } from 'react-redux';
+import store from 'store'
+import { storeShared } from '_qiankun'
 let root: ReactDOM.Root
 
 function render(props: { container?: HTMLElement, basename?: string }) {
@@ -20,12 +19,13 @@ function render(props: { container?: HTMLElement, basename?: string }) {
   // @ts-ignore
   const basename = window.__POWERED_BY_QIANKUN__ ? props.basename : '/'
 
-  // TODO: 共享 store
   root.render(
     <React.StrictMode>
-      <BrowserRouter basename={basename}>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter basename={basename}>
+          <App />
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode >
   );
 }
@@ -40,19 +40,11 @@ export async function bootstrap() {
 }
 
 export async function mount(props: any) {
-  // console.log('[react16] props from main framework', props);
+  // 装填微服务监听程序
+  storeShared.setMicroAppStateActions(props).listen()
+
   // 默认设置多语言
   i18n.changeLanguage(localStorage.getItem('i18nextLng') || 'zh_CN')
-
-  // props.setGlobalState
-  // 监听多语言切换
-  props.onGlobalStateChange((state: any, prev: any) => {
-    // state: 变更后的状态; prev 变更前的状态
-    if (state.lng !== prev.lng) {
-      console.log(state, prev);
-      i18n.changeLanguage(state.lng)
-    }
-  });
   render(props);
 }
 
