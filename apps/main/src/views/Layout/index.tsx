@@ -10,13 +10,12 @@ import { useImmer } from 'use-immer';
 import { mockMenusApi } from 'mock/routes'
 import { dntMenuBuilder } from 'utils/router';
 import { Language } from '@dnt/locale';
-import { storeShared } from '_qiankun';
+import { storeShared, EventBusType } from '_qiankun';
 import { changeLngAction } from 'store/modules/app';
 import { useDispatch } from "react-redux";
 import { getI18n, useTranslation } from 'react-i18next';
 // import { useAppSelector } from 'store/hooks';
 import theme from '@dnt/theme/lib/index'
-import { EventBusType } from '@dnt/utils/lib/StoreShared';
 
 const Layout = () => {
   const navigate = useNavigate()

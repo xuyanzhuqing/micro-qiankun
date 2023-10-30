@@ -2,6 +2,7 @@ import StoreShared, { EventBusType, QianKunState } from '@dnt/utils/lib/StoreSha
 import store, { type RootState } from 'store'
 import { initGlobalState, MicroAppStateActions } from 'qiankun';
 import i18nInstance from '../i18n'
+export { EventBusType } from '@dnt/utils/lib/StoreShared';
 
 const qiankunState: QianKunState = {
   eventBusType: EventBusType.VOID,

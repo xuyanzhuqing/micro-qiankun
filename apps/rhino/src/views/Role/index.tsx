@@ -1,6 +1,5 @@
 import { Language } from '@dnt/locale';
-import { EventBusType } from '@dnt/utils/lib/StoreShared';
-import { storeShared } from '_qiankun';
+import { storeShared, EventBusType } from '_qiankun';
 import { Button } from 'antd';
 import { useTranslation, Trans } from "react-i18next";
 const { name } = require('../../../package.json')
