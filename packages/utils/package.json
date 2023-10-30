@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "@jest/globals": "^29.7.0",
+    "@reduxjs/toolkit": "^1.9.5",
     "@types/lodash-es": "^4.17.10",
     "lodash-es": "^4.17.21"
   }
