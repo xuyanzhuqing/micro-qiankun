@@ -13,9 +13,19 @@ export declare function initGlobalState(state?: Record<string, any>): MicroAppSt
  * 微服务共享 bus 事件类型
  */
 export enum EventBusType {
+  /**
+   * 默认
+   */
   'VOID',
+  /**
+   * 同步共享状态，用于微服务 mount 同步共享状态
+   */
+  'SYNC',
+  /**
+   * 设置多语言
+   */
   'SET_LANGUAGE',
-  'SET_MENU'
+  'SET_MENU',
 }
 
 export interface QianKunState {
@@ -39,6 +49,10 @@ export default class StoreShared<T, S extends Record<string, any>> {
       this.microAppStateActions = microAppStateActions
       this.listen()
     }
+
+    this.listenerMap.forEach((callback, type) => {
+      this.on(type, callback.bind(this))
+    })
   }
 
   setMicroAppStateActions(actions: MicroAppStateActions) {
@@ -113,4 +127,19 @@ export default class StoreShared<T, S extends Record<string, any>> {
       this.eventBus.get(eventBusType)?.forEach(event => event(data, data))
     }
   }
+
+  /**
+   * 所有微服务共享的监听程序
+   */
+  private listenerMap = new Map<EventBusType, (state: S, prev: S) => void>([
+    /**
+     * 微服务 afterMount 后执行
+     */
+    [
+      EventBusType.SYNC,
+      (state, prev) => {
+        console.info('share state synced', state)
+      }
+    ]
+  ])
 }
