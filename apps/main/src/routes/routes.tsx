@@ -1,4 +1,4 @@
-import { RouteObject, redirect, useLocation } from "react-router-dom";
+import { RouteObject, useLocation } from "react-router-dom";
 import React from "react";
 import { lazyLoad } from "utils/router";
 

@@ -37,7 +37,7 @@ const Layout = () => {
       dispatch(changeMenusAction(menus));
       // navigate("/home");
     })()
-  }, [])
+  }, [dispatch])
 
   const { t } = useTranslation();
   const i18n = getI18n()
