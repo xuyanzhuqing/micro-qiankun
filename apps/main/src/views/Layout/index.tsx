@@ -11,11 +11,12 @@ import { mockMenusApi } from 'mock/routes'
 import { dntMenuBuilder } from 'utils/router';
 import { Language } from '@dnt/locale';
 import { storeShared, EventBusType } from '_qiankun';
-import { changeLngAction } from 'store/modules/app';
-import { useDispatch } from "react-redux";
 import { getI18n, useTranslation } from 'react-i18next';
 // import { useAppSelector } from 'store/hooks';
 import theme from '@dnt/theme/lib/index'
+import { useEffect } from 'react';
+import { changeMenusAction } from 'store/modules/login';
+import { useDispatch } from 'react-redux';
 
 const Layout = () => {
   const navigate = useNavigate()
@@ -29,6 +30,14 @@ const Layout = () => {
   // const menus = useAppSelector((state) => {
   //   return state.login.menus
   // })
+
+  useEffect(() => {
+    (async () => {
+      const menus = await mockMenusApi()
+      dispatch(changeMenusAction(menus));
+      // navigate("/home");
+    })()
+  }, [])
 
   const { t } = useTranslation();
   const i18n = getI18n()

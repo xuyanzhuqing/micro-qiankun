@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const onFinish = async (values: any) => {
     const menus = await mockMenusApi()
     dispatch(changeMenusAction(menus));
-    navigate("/home");
+    navigate("/");
   };
 
   const onFinishFailed = (errorInfo: any) => {

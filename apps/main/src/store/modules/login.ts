@@ -4,7 +4,7 @@ import { DntPureMenuProps } from 'routes/type'
 export const loadLocalLogin = createAsyncThunk(
   "login/loadLocalLogin",
   (_, { dispatch }) => {
-    const menus = localStorage.getItem("menus");
+    const menus = sessionStorage.getItem("menus");
     if (menus) {
       dispatch(changeMenusAction(JSON.parse(menus)));
     }
@@ -26,7 +26,7 @@ const loginSlice = createSlice({
     changeMenusAction(state, action: PayloadAction<DntPureMenuProps[]>) {
       // 把数据存到redux里面，有点类似vuex
       state.menus = action.payload;
-      localStorage.setItem("menus", JSON.stringify(action.payload));
+      sessionStorage.setItem("menus", JSON.stringify(action.payload));
     },
   },
 });
