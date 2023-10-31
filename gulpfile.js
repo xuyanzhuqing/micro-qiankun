@@ -5,7 +5,8 @@ const shell = require('shelljs');
 const config = {
   apps: [
     'main',
-    'rhino'
+    'rhino',
+    'auth'
   ],
   pkgs: [
     '@dnt/config',

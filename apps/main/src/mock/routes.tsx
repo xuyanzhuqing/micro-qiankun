@@ -47,6 +47,28 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
             element: 'Micro',
           },
           {
+            path: 'role',
+            key: 'role',
+            lang: {
+              en_GB: 'role',
+              zh_CN: '角色管理'
+            },
+            "entry": "auth",
+            "container": "#container",
+            element: 'Micro',
+          },
+          {
+            path: 'user',
+            key: 'user',
+            lang: {
+              en_GB: 'user',
+              zh_CN: '用户管理'
+            },
+            "entry": "auth",
+            "container": "#container",
+            element: 'Micro',
+          },
+          {
             path: 'hippo',
             key: 'hippo',
             lang: {

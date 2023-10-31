@@ -18,6 +18,124 @@ importers:
         specifier: ^0.8.5
         version: 0.8.5
 
+  apps/auth:
+    dependencies:
+      '@ant-design/icons':
+        specifier: ^5.2.6
+        version: 5.2.6(react-dom@18.2.0)(react@18.2.0)
+      '@ant-design/pro-components':
+        specifier: ^2.6.29
+        version: 2.6.30(antd@5.10.1)(rc-field-form@1.40.0)(react-dom@18.2.0)(react@18.2.0)
+      '@dnt/axios':
+        specifier: workspace:*
+        version: link:../../packages/axios
+      '@dnt/components':
+        specifier: workspace:*
+        version: link:../../packages/components
+      '@dnt/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@dnt/locale':
+        specifier: workspace:*
+        version: link:../../packages/locale
+      '@dnt/theme':
+        specifier: workspace:*
+        version: link:../../packages/theme
+      '@dnt/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@emotion/css':
+        specifier: ^11.11.2
+        version: 11.11.2
+      '@reduxjs/toolkit':
+        specifier: ^1.9.5
+        version: 1.9.7(react-redux@8.1.3)(react@18.2.0)
+      '@testing-library/user-event':
+        specifier: ^13.5.0
+        version: 13.5.0(@testing-library/dom@9.3.3)
+      antd:
+        specifier: ^5.9.3
+        version: 5.10.1(react-dom@18.2.0)(react@18.2.0)
+      i18next:
+        specifier: ^23.5.1
+        version: 23.5.1
+      i18next-browser-languagedetector:
+        specifier: ^7.1.0
+        version: 7.1.0
+      qiankun:
+        specifier: ^2.10.13
+        version: 2.10.14
+      rc-menu:
+        specifier: ^9.12.0
+        version: 9.12.2(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-i18next:
+        specifier: ^13.2.2
+        version: 13.3.0(i18next@23.5.1)(react-dom@18.2.0)(react@18.2.0)
+      react-redux:
+        specifier: ^8.1.2
+        version: 8.1.3(@types/react-dom@18.2.13)(@types/react@18.2.28)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      react-router-dom:
+        specifier: ^6.15.0
+        version: 6.17.0(react-dom@18.2.0)(react@18.2.0)
+      react-scripts:
+        specifier: 5.0.1
+        version: 5.0.1(@babel/plugin-syntax-flow@7.22.5)(@babel/plugin-transform-react-jsx@7.22.15)(eslint@8.51.0)(react@18.2.0)(sass@1.69.4)(typescript@5.2.2)
+      swr:
+        specifier: ^2.2.2
+        version: 2.2.4(react@18.2.0)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      use-immer:
+        specifier: ^0.9.0
+        version: 0.9.0(immer@10.0.3)(react@18.2.0)
+      web-vitals:
+        specifier: ^3.4.0
+        version: 3.5.0
+    devDependencies:
+      '@babel/plugin-proposal-private-property-in-object':
+        specifier: ^7.21.11
+        version: 7.21.11(@babel/core@7.23.2)
+      '@craco/craco':
+        specifier: ^7.1.0
+        version: 7.1.0(@types/node@16.18.58)(postcss@8.4.31)(react-scripts@5.0.1)(typescript@5.2.2)
+      '@dnt/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@testing-library/jest-dom':
+        specifier: ^5.17.0
+        version: 5.17.0
+      '@testing-library/react':
+        specifier: ^13.4.0
+        version: 13.4.0(react-dom@18.2.0)(react@18.2.0)
+      '@types/jest':
+        specifier: ^27.5.2
+        version: 27.5.2
+      '@types/node':
+        specifier: ^16.18.50
+        version: 16.18.58
+      '@types/react':
+        specifier: ^18.2.21
+        version: 18.2.28
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.13
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
+      sass:
+        specifier: ^1.66.1
+        version: 1.69.4
+      sass-loader:
+        specifier: ^13.3.2
+        version: 13.3.2(sass@1.69.4)(webpack@5.89.0)
+
   apps/main:
     dependencies:
       '@ant-design/icons':
@@ -4887,6 +5005,7 @@ packages:
 
   /@types/node@20.5.1:
     resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
+    dev: true
 
   /@types/normalize-package-data@2.4.2:
     resolution: {integrity: sha512-lqa4UEhhv/2sjjIQgjX8B+RBjj47eo0mzGasklVJ78UKGQY1r0VpB9XHDaZZO9qzEFDdy4MrXLuEaSmPrPSe/A==}
@@ -4991,7 +5110,7 @@ packages:
   /@types/testing-library__jest-dom@5.14.9:
     resolution: {integrity: sha512-FSYhIjFlfOpGSRyVoMBMuS3ws5ehFQODymf3vlI7U1K8c7PHwWwFY7VREfmsuzHSOnoKs/9/Y983ayOs7eRzqw==}
     dependencies:
-      '@types/jest': 27.5.2
+      '@types/jest': 29.5.6
     dev: true
 
   /@types/trusted-types@2.0.4:
@@ -13253,7 +13372,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.5.1
+      '@types/node': 16.18.58
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
