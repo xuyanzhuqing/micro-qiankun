@@ -6,5 +6,8 @@ module.exports = {
   root: true,
   env: {
     browser: true, // https://juejin.cn/post/7144174159021473829
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 };
