@@ -45,5 +45,9 @@ exports.postBuild = series(
   cb => { shell.rm('-rf', './build'); cb() },
   cb => { shell.cp('-r', './apps/main/build', './build'); cb() },
   cb => { shell.mkdir('-p', './build/child'); cb() },
-  cb => { shell.cp('-r', './apps/rhino/build', './build/child/rhino/'); cb() },
+  ...config.apps
+    .filter(app => app !== 'main')
+    .map(app => {
+      return cb => { shell.cp('-r', `./apps/${app}/build`, `./build/child/${app}/`); cb() }
+    })
 )
