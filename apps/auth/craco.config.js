@@ -1,6 +1,6 @@
 const { name } = require("./package");
 const config = require("dotenv").config();
-const { cdns, externals } = require('@dnt/config')
+const { cdns, externals } = require('@dnt/config/cdn.js')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {

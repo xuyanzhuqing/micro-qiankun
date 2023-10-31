@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { cdns, externals } = require('@dnt/config')
+const { cdns, externals } = require('@dnt/config/cdn.js')
 
 module.exports = {
   webpack: {
