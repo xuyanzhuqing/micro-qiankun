@@ -36,9 +36,20 @@ module.exports = {
       "Access-Control-Allow-Origin": "*",
     };
     devServerConfig.historyApiFallback = true;
+
+    // 主应用中不能刷新，当前微应用可以刷新
+    // devServerConfig.hot = true;
+    // devServerConfig.liveReload = false;
+
+    // 主应用中可以刷新，但是是通过 reload 的界面整体刷新，非常不友好，状态都刷没了
     devServerConfig.hot = false;
     devServerConfig.liveReload = true;
-    devServerConfig.client.webSocketURL.port = config.parsed.PORT;
+
+    // 主微应用都不刷新了
+    // devServerConfig.hot = false
+    // devServerConfig.liveReload = false
+
+    devServerConfig.client.webSocketURL.port = devServerConfig.port;
     devServerConfig.open = false;
 
     // Return your customised Webpack Development Server config.
