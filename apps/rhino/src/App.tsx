@@ -7,7 +7,7 @@ import { Suspense, useState } from 'react';
 import { Fullback } from '@dnt/components'
 import { routes } from './routes'
 
-function App() {
+const App = () => {
   const [rout, setRout] = useState(routes())
   const element = useRoutes(rout);
   return (
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { useTranslation, Trans } from "react-i18next";
 const { name } = require('../../../package.json')
 
-function App() {
+const Role = () => {
   // @ts-ignore
   const { t, i18n } = useTranslation();
 
@@ -30,4 +30,4 @@ function App() {
   );
 }
 
-export default App;
+export default Role;

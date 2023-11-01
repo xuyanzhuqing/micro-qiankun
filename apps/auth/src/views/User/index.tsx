@@ -1,10 +1,12 @@
-const { name } = require('../../../package.json')
+import { useState } from "react"
 
-export default () => {
-  return (
-    <div>
-      {name}
-      <p>user</p>
-    </div>
-  )
+const User = () => {
+  const [age, setAge] = useState(0)
+  return <div>
+    <span>user</span>
+    {age} ccc
+    <button type="button" onClick={() => setAge(age + 1)}>+</button>
+  </div>
 }
+
+export default User
