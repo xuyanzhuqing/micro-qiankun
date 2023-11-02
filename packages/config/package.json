@@ -6,7 +6,8 @@
   "types": "lib/index.d.ts",
   "files": [
     "lib/",
-    "cdn.js"
+    "cdn.js",
+    "tsconfig.dnt.json"
   ],
   "scripts": {
     "dev": "tsc --watch",

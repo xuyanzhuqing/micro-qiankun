@@ -6,8 +6,8 @@
     "@ant-design/icons": "^5.2.6",
     "@ant-design/pro-components": "^2.6.29",
     "@dnt/axios": "workspace:*",
-    "@dnt/config": "workspace:*",
     "@dnt/components": "workspace:*",
+    "@dnt/config": "workspace:*",
     "@dnt/locale": "workspace:*",
     "@dnt/theme": "workspace:*",
     "@dnt/utils": "workspace:*",
@@ -57,7 +57,6 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
-    "@dnt/tsconfig": "workspace:*",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@types/jest": "^27.5.2",

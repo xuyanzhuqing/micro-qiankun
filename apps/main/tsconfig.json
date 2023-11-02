@@ -1,5 +1,5 @@
 {
-  "extends": "@dnt/tsconfig/index.json",
+  "extends": "@dnt/config/tsconfig.dnt.json",
   "include": [
     "src"
   ],

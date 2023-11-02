@@ -105,9 +105,6 @@ importers:
       '@craco/craco':
         specifier: ^7.1.0
         version: 7.1.0(@types/node@16.18.58)(postcss@8.4.31)(react-scripts@5.0.1)(typescript@5.2.2)
-      '@dnt/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@testing-library/jest-dom':
         specifier: ^5.17.0
         version: 5.17.0
@@ -238,9 +235,6 @@ importers:
       '@craco/craco':
         specifier: ^7.1.0
         version: 7.1.0(@types/node@16.18.58)(postcss@8.4.31)(react-scripts@5.0.1)(typescript@5.2.2)
-      '@dnt/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@testing-library/jest-dom':
         specifier: ^5.17.0
         version: 5.17.0
@@ -362,9 +356,6 @@ importers:
       '@craco/craco':
         specifier: ^7.1.0
         version: 7.1.0(@types/node@16.18.58)(postcss@8.4.31)(react-scripts@5.0.1)(typescript@5.2.2)
-      '@dnt/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       '@testing-library/jest-dom':
         specifier: ^5.17.0
         version: 5.17.0
