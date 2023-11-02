@@ -1,18 +1,20 @@
 {
   "cSpell.words": [
+    "antd",
     "craco",
+    "iconfont",
+    "immer",
+    "languagedetector",
+    "preid",
+    "preinstall",
     "qiankun",
     "reduxjs",
-    "antd",
-    "immer",
-    "iconfont",
-    "preid",
-    "languagedetector",
-    "subdirs",
     "sider",
-    "Siderbar"
+    "Siderbar",
+    "subdirs"
   ],
   "cSpell.ignorePaths": [
-    "/pnpm-lock.yaml"
+    "/pnpm-lock.yaml",
+    "/**/*/package.json"
   ]
 }
