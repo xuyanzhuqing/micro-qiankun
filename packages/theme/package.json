@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "tsc --watch",
     "build": "tsc",
     "version:alpha": "npm version prerelease --preid=alpha",

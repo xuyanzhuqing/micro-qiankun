@@ -2,6 +2,7 @@
   "name": "entry",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "gulp dev",
     "dev:app": "gulp devApp",
     "dev:pkg": "gulp devPkg",
