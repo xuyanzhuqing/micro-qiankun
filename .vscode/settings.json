@@ -1,6 +1,18 @@
 {
   "cSpell.words": [
     "craco",
-    "qiankun"
+    "qiankun",
+    "reduxjs",
+    "antd",
+    "immer",
+    "iconfont",
+    "preid",
+    "languagedetector",
+    "subdirs",
+    "sider",
+    "Siderbar"
+  ],
+  "cSpell.ignorePaths": [
+    "/pnpm-lock.yaml"
   ]
 }
