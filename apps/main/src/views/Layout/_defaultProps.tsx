@@ -6,7 +6,8 @@ const proLayoutProps: Partial<ProLayoutProps> = {
   layout: 'mix',
   splitMenus: false,
   location: {
-    pathname: '/home',
+    // 修复 f5 刷新菜单选中与路由不符
+    pathname: window.location.pathname,
   },
   route: {}
 }
