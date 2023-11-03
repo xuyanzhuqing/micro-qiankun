@@ -11,8 +11,6 @@ import store from 'store'
 import { storeShared } from '_qiankun'
 let root: ReactDOM.Root
 
-const { name: appName } = require('../package.json')
-
 function render(props: { container?: HTMLElement, basename?: string }) {
   root = ReactDOM.createRoot(
     props.container ? props.container : document.getElementById('root') as HTMLElement
@@ -45,7 +43,6 @@ export async function mount(props: any) {
   // 装填微服务监听程序
   storeShared
     .setMicroAppStateActions(props)
-    .setAppName(appName)
     .listen()
 
   // 默认设置多语言
