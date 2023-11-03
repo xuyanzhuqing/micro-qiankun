@@ -39,10 +39,6 @@ const App: React.FC = () => {
     start({
       sandbox: false
     })
-
-    return () => {
-      window.qiankunStarted = false;
-    }
   }, [location, menus])
 
   return (
