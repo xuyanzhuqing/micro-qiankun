@@ -1,20 +1,17 @@
+启动工程
+
 ```bash
-pnpm install
-
-pnpm dev
-
+pnpm install && pnpm dev
 ```
 
-todo list
-1. 动态路由
-  动态配置路由
-  动态菜单
-  动态注册微服务
-2. 切换多语言
+打包工程
+```bash
+pnpm build
+```
 
-3. OEM production info
+pnpm [过滤](https://pnpm.io/zh/filtering#--filter-package_name)启动某单独工程
+```bash
+pnpm --filter main run start
+```
 
-4. 权限系统
-  按钮
-    读 操作 显隐/禁用
-  页面
+本工程采用 [pnpm workspace](https://pnpm.io/zh/workspaces) & [gulp.js](https://gulpjs.com/docs/en/getting-started/quick-start) 进行任务编排
