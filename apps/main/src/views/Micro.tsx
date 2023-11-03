@@ -26,8 +26,8 @@ const App: React.FC = () => {
     registerMicroApps(
       mixedProps,
       {
-        beforeMount: [(app) => new Promise((resolve, reject) => {
-          storeShared.emit(EventBusType.SYNC, { menus: ['来自 main 的菜单数据'] })
+        afterMount: [(app) => new Promise((resolve, reject) => {
+          storeShared.emit(EventBusType.SYNC, { auth: ['来自 main 的数据'] })
           /**
            * 未知返回
            */

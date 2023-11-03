@@ -10,7 +10,11 @@ export const loadLocalShare = createAsyncThunk(
   }
 );
 
-const initialState = {
+export type ShareState = {
+  auth: string[]
+}
+
+const initialState: ShareState = {
   auth: []
 }
 

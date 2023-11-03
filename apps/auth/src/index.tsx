@@ -9,6 +9,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from 'store'
 import { storeShared } from '_qiankun'
+const { name: appName } = require('../package.json')
+
 let root: ReactDOM.Root
 
 function render(props: { container?: HTMLElement, basename?: string }) {
@@ -41,7 +43,10 @@ export async function bootstrap() {
 
 export async function mount(props: any) {
   // 装填微服务监听程序
-  storeShared.setMicroAppStateActions(props).listen()
+  storeShared
+    .setMicroAppStateActions(props)
+    .setAppName(appName)
+    .listen()
 
   // 默认设置多语言
   i18n.changeLanguage(localStorage.getItem('i18nextLng') || 'zh_CN')

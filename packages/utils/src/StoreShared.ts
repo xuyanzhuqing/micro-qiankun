@@ -1,4 +1,10 @@
 import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
+import { type ShareState } from './share-module'
+
+export type ShareReduxState = {
+  share: ShareState
+}
+
 export type OnGlobalStateChangeCallback = (state: Record<string, any>, prevState: Record<string, any>) => void;
 
 export type MicroAppStateActions = {
@@ -31,10 +37,15 @@ export enum EventBusType {
 export interface QianKunState {
   eventBusType?: EventBusType;
   lng?: any;
-  menus?: string[]
+  menus?: string[];
+  auth?: string[]
 }
 
-export default class StoreShared<T, S extends Record<string, any>> {
+export default class StoreShared<T extends ShareReduxState, S extends Record<string, any>> {
+  /**
+   * 方便调试微服务
+   */
+  private appName = 'main'
   private microAppStateActions?: MicroAppStateActions
   private _toolkitStore!: ToolkitStore<T>
 
@@ -43,7 +54,9 @@ export default class StoreShared<T, S extends Record<string, any>> {
    * @param toolkitStore redux 状态
    * @param initialize qiankun state 微应用可不传初始值
    */
-  constructor(toolkitStore: ToolkitStore<T>, microAppStateActions?: MicroAppStateActions) {
+  constructor(toolkitStore: ToolkitStore<T>, microAppStateActions?: MicroAppStateActions, appName?: string) {
+    if (appName) this.appName = appName
+
     this._toolkitStore = toolkitStore
     if (microAppStateActions) {
       this.microAppStateActions = microAppStateActions
@@ -53,6 +66,11 @@ export default class StoreShared<T, S extends Record<string, any>> {
     this.listenerMap.forEach((callback, type) => {
       this.on(type, callback.bind(this))
     })
+  }
+
+  setAppName(name: string) {
+    this.appName = name
+    return this
   }
 
   setMicroAppStateActions(actions: MicroAppStateActions) {
@@ -136,9 +154,11 @@ export default class StoreShared<T, S extends Record<string, any>> {
      * 微服务 afterMount 后执行
      */
     [
-      EventBusType.SYNC,
-      (state, prev) => {
-        console.info('share state synced', state)
+      EventBusType.SYNC, (state: S, prev: S) => {
+        console.info(this.appName + ':share state synced', state)
+        this._toolkitStore.dispatch({
+          type: "share/changeAuthAction", payload: state.auth
+        })
       }
     ]
   ])
