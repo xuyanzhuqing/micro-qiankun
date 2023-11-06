@@ -7,9 +7,7 @@ import { AppFullback } from '@dnt/components';
 
 export default () => {
   return (
-    <div style={{ position: 'relative' }}>
-      <AppFullback/>
-    </div>
+    <AppFullback/>
   )
 };
 ```

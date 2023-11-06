@@ -1,14 +1,16 @@
 import React from 'react';
-import './index.less'
+import './index.css'
 
 const AppFullback: React.FC = () => {
   return (
-    <div className="loading">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div id="app-fullback">
+      <div className="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   )
 }
