@@ -3,6 +3,8 @@ import React from "react";
 import { lazyLoad } from "utils/router";
 
 const NotFound = React.lazy(() => import('@dnt/components/dist/NotFound'))
+const Login = React.lazy(() => import('views/Login'))
+const Layout = React.lazy(() => import('views/Layout'))
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const location = useLocation()
@@ -23,14 +25,14 @@ const routes = (): RouteObject[] => [
   {
     path: "/",
     id: "root",
-    element: <RequireAuth>{lazyLoad('Layout')}</RequireAuth>,
+    element: <RequireAuth><Layout /></RequireAuth>,
     children: []
   },
   // qiankun-boot-injector
   {
     path: "login",
     id: "login",
-    element: lazyLoad('Login'),
+    element: <Login />,
   },
   {
     path: '*',

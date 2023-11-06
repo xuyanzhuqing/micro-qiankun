@@ -6,7 +6,7 @@ import { ConfigProvider } from "antd";
 import { AliasToken } from "antd/es/theme/interface";
 import theme from '@dnt/theme/lib/index'
 import { useAppSelector } from 'store/hooks'
-import { Fullback } from '@dnt/components'
+import { AppFullback } from '@dnt/components'
 import { dntRouteMenuBuilder } from 'utils/router'
 
 const App = () => {
@@ -29,9 +29,8 @@ const App = () => {
   useEffect(() => {
     setRout(dntRouteMenuBuilder(menus))
   }, [menus])
-
   return (
-    <Suspense fallback={<Fullback />}>
+    <Suspense fallback={<AppFullback />}>
       <ConfigProvider
         locale={locale}
         theme={{
