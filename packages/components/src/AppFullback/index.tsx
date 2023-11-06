@@ -1,10 +1,10 @@
 import React from 'react';
-import './index.css'
+import './index.scss'
 
 const AppFullback: React.FC = () => {
   return (
-    <div id="app-fullback">
-      <div className="loading">
+    <div className="app-fullback">
+      <div className="app-fullback--inner">
         <span></span>
         <span></span>
         <span></span>
