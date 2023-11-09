@@ -2,7 +2,6 @@
  * 十六进制字符转换
  */
 import { RangeNumber } from './ts-util'
-import baseCov from './base-conversion'
 
 const hexLowerCase = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'] as const
 
@@ -46,7 +45,7 @@ export default class Hex {
       if (cache.has(n)) {
         return cache.get(n) as Bites
       }
-      const res = baseCov<Bites>(n, 2, [0, 0, 0, 0])
+      const res = n.toString(2).padStart(4, '0').split('').map(v => v === '1' ? 1 : 0) as Bites
       cache.set(n, res)
       return res
     }
