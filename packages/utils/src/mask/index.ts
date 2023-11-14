@@ -86,11 +86,13 @@ export class Mask {
     }
   }
 
-  public static getV6Mask(mask: number | string): string | number | undefined {
+  public getV6Mask(mask: number): string | undefined
+  public getV6Mask(mask: string): number | undefined
+  public getV6Mask(mask: number | string): string | number | undefined {
     if (typeof mask === 'number') {
-      return this.maskMap.get(mask as any)?.v6
+      return Mask.maskMap.get(mask as any)?.v6
     } else {
-      return this.maskMapV6.get(mask as any)
+      return Mask.maskMapV6.get(mask as any)
     }
   }
 }
