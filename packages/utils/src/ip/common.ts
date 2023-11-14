@@ -110,7 +110,7 @@ export abstract class IpAbstract {
   /**
    * 获取网段信息
    */
-  abstract subnet(ip: string, mask: string): Subnet
+  abstract subnet(ip: string, mask: string | number): Subnet
   /**
    * 实现思路
    * 1. 将 mask 按位取反

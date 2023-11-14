@@ -192,6 +192,13 @@ describe("Ip it test", () => {
       lastAddress: '192.168.10.254',
       broadcastAddress: '192.168.10.255',
     })
+    expect(ipV4Handler.subnet('192.168.10.2', 24)).toEqual({
+      available: 254,
+      network: '192.168.10.0',
+      firstAddress: '192.168.10.1',
+      lastAddress: '192.168.10.254',
+      broadcastAddress: '192.168.10.255',
+    })
     expect(ipV4Handler.subnet('192.168.10.2', '255.255.192.0')).toEqual({
       available: 16382,
       network: '192.168.0.0',
@@ -206,6 +213,9 @@ describe("Ip it test", () => {
     expect(ipV4Handler.calculateAddresses('192.168.10.2', 2, '255.255.255.254')).toEqual(['192.168.10.2', '192.168.10.3'])
     expect(ipV4Handler.calculateAddresses('192.168.62.254', 5, '255.255.192.0')).toEqual([
       '192.168.62.254', '192.168.62.255', '192.168.63.0', '192.168.63.1', '192.168.63.2'
+    ])
+    expect(ipV4Handler.calculateAddresses('255.255.255.252', 10, '255.255.255.0')).toEqual([
+      '255.255.255.252', '255.255.255.253', '255.255.255.254', '255.255.255.255'
     ])
   })
 
@@ -268,6 +278,13 @@ describe("Ip it test", () => {
       lastAddress: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
       broadcastAddress: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'
     })
+    expect(ipV6Handler.subnet('FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF', 64)).toEqual({
+      available: 18446744073709552000,
+      network: 'ffff:ffff:ffff:ffff:0:0:0:0',
+      firstAddress: 'ffff:ffff:ffff:ffff:0000:0000:0000:0000',
+      lastAddress: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+      broadcastAddress: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff'
+    })
     expect(ipV6Handler.subnet('0000:0000:0000:0000:000a:0001:0002:0003', 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00')).toEqual({
       available: 256,
       network: '0:0:0:0:a:1:2:0',
@@ -278,6 +295,14 @@ describe("Ip it test", () => {
   })
 
   test('is calculateAddresses success', () => {
+    expect(ipV6Handler.calculateAddresses('ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffa', 7, 112)).toEqual([
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffa',
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffb',
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc',
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffd',
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe',
+      'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+    ])
     expect(ipV6Handler.calculateAddresses('fe80:0000:0000:7aca:39ff:0000:0000:e67d', 1)).toEqual(['fe80:0:0:7aca:39ff:0:0:e67d'])
     expect(ipV6Handler.calculateAddresses('FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:0', 2)).toEqual(['ffff:ffff:ffff:ffff:ffff:ffff:ffff:0', 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:1'])
   })

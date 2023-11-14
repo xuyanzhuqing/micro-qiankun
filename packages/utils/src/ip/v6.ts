@@ -2,13 +2,17 @@ import { Bite, IpAbstract, Subnet } from "./common"
 import Big from 'big.js'
 import maskInstance, { Mask } from '../mask';
 import maskUtil from '../mask'
+import { isV6Format } from "./regex";
 
 export class IpV6Handler extends IpAbstract {
   calculateAddresses(ip: string, count: number, mask?: string | number): string[] {
     let strMask: string | undefined
     if (typeof mask === 'number') {
       strMask = maskUtil.getV6Mask(mask)
-    } else {
+    } else if (typeof mask === 'string') {
+      if (!isV6Format(mask)) {
+        throw new Error(`invalid mask: ${mask}`)
+      }
       strMask = mask
     }
 
@@ -27,6 +31,10 @@ export class IpV6Handler extends IpAbstract {
     const subnet = this.subnet(ip, strMask)
     for (let i = 0; i < count && i < subnet.available; i++) {
       res.push(this.longToIP(firstLongAddress + BigInt(i)))
+      // 判断溢出
+      if ((res[i].match(/ffff/ig) || []).length === 8) {
+        break
+      }
     }
     return res
   }
@@ -34,7 +42,10 @@ export class IpV6Handler extends IpAbstract {
     let strMask: string | undefined
     if (typeof mask === 'number') {
       strMask = maskUtil.getV6Mask(mask)
-    } else {
+    } else if (typeof mask === 'string') {
+      if (!isV6Format(mask)) {
+        throw new Error(`invalid mask: ${mask}`)
+      }
       strMask = mask
     }
 
@@ -172,11 +183,12 @@ export class IpV6Handler extends IpAbstract {
     }
     return arr.join(':')
   }
-  subnet(ip: string, mask: string): Subnet {
+  subnet(ip: string, mask: string | number): Subnet {
     // https://jennieji.github.io/subipv6/
-    const cidrMask = maskInstance.getV6Mask(mask)
-    if (cidrMask === undefined) {
-      throw new Error(`invalid CIDR subnet: ${mask}`)
+    const cidrMask = typeof mask === 'number' ? mask : maskUtil.getV6Mask(mask)
+    const maskString = typeof mask === 'number' ? maskUtil.getV6Mask(mask) : mask
+    if (maskString === undefined || cidrMask === undefined) {
+      throw new Error(`invalid mask: ${mask}`)
     }
 
     const baseIp = this.convertIPtoBinary(ip).slice(0, cidrMask)
@@ -184,7 +196,7 @@ export class IpV6Handler extends IpAbstract {
     const minIp = baseIp.concat(rest.fill(0))
     const maxIp = baseIp.concat(rest.fill(1))
 
-    const network = this.and(mask, ip)
+    const network = this.and(maskString, ip)
     const networkId = []
 
     for (let i = 0; i < network.length; i += 16) {

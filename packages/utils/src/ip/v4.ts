@@ -1,7 +1,7 @@
 
-import maskInstance from '../mask';
 import { Bite, IpAbstract, Subnet } from './common'
 import maskUtil from '../mask'
+import { isV4Format } from './regex';
 
 export class IpV4Handler extends IpAbstract {
   ipToLong(ip: string): number {
@@ -68,14 +68,15 @@ export class IpV4Handler extends IpAbstract {
   }
 
 
-  subnet(ip: string, mask: string): Subnet {
-    const cidrMask = maskInstance.getV4Mask(mask)
-    if (cidrMask === undefined) {
-      throw new Error(`invalid CIDR subnet: ${mask}`)
+  subnet(ip: string, mask: string | number): Subnet {
+    const cidrMask = typeof mask === 'number' ? mask : maskUtil.getV4Mask(mask)
+    const maskString = typeof mask === 'number' ? maskUtil.getV4Mask(mask) : mask
+    if (maskString === undefined || cidrMask === undefined) {
+      throw new Error(`invalid mask: ${mask}`)
     }
 
     const ipFrags = ip.split('.').map(v => parseInt(v, 10))
-    const maskFrags = mask.split('.').map(v => parseInt(v, 10))
+    const maskFrags = maskString.split('.').map(v => parseInt(v, 10))
 
     if (cidrMask == 31) {
       const firstAddress = ipFrags.map((ip, i) => ip & maskFrags[i]).join('.')
@@ -116,7 +117,10 @@ export class IpV4Handler extends IpAbstract {
     let strMask: string | undefined
     if (typeof mask === 'number') {
       strMask = maskUtil.getV4Mask(mask)
-    } else {
+    } else if (typeof mask === 'string') {
+      if (!isV4Format(mask)) {
+        throw new Error(`Invalid mask: ${mask}`)
+      }
       strMask = mask
     }
 
@@ -134,6 +138,10 @@ export class IpV4Handler extends IpAbstract {
     const subnet = this.subnet(ip, strMask)
     for (let i = 0; i < count && i < subnet.available; i++) {
       res.push(this.longToIP(firstLongAddress++))
+      // 防止溢出
+      if (res[i] === '255.255.255.255') {
+        break
+      }
     }
     return res
   }
@@ -142,7 +150,10 @@ export class IpV4Handler extends IpAbstract {
     let strMask: string | undefined
     if (typeof mask === 'number') {
       strMask = maskUtil.getV4Mask(mask)
-    } else {
+    } else if (typeof mask === 'string') {
+      if (!isV4Format(mask)) {
+        throw new Error(`Invalid mask: ${mask}`)
+      }
       strMask = mask
     }
 
