@@ -1,4 +1,5 @@
 export * from './common'
+export * from './regex'
 import { IpV4Handler } from './v4'
 import { IpV6Handler } from './v6'
 

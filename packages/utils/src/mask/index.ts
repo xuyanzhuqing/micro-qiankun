@@ -1,7 +1,7 @@
 import { Tuple } from '../ts-util'
 import v4 from './v4'
 import v6 from './v6'
-import { ipV4Handler, ipV6Handler } from '../ip'
+import { ipV4Handler, ipV6Handler, isV4Format, isV6Format } from '../ip'
 
 type KeyOfV6 = typeof v6[number][1]
 type ValueOfV6 = typeof v6[number][0]
@@ -67,9 +67,9 @@ export class Mask {
   public static isValid(mask: string | number): boolean {
     if (typeof mask === 'number') {
       return mask % 1 === 0 && mask >= 1 && mask <= 128
-    } else if (ipV4Handler.isV4Format(mask)) {
+    } else if (isV4Format(mask)) {
       return this.isValidV4(mask)
-    } else if (ipV6Handler.isV6Format(mask)) {
+    } else if (isV6Format(mask)) {
       return this.isValidV6(mask)
     } else {
       return false
