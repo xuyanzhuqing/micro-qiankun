@@ -18,7 +18,10 @@ export class Random {
 
   private characters: Array<string | number> = []
 
-  constructor (
+  /**
+   * 默认值支持小写，数字，长度为6个字符
+   */
+  constructor(
     {
       /**
        * [随机长度]
@@ -74,7 +77,7 @@ export class Random {
     this.characters = Array.from(new Set(characters))
   }
 
-  make (): string {
+  make(): string {
     const randoms: Array<string | number> = []
     const characters = this.characters
     for (let i = 0; i < this.length; i++) {
