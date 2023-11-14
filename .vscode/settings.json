@@ -15,6 +15,7 @@
   ],
   "cSpell.ignorePaths": [
     "/pnpm-lock.yaml",
-    "/**/*/package.json"
+    "/**/*/package.json",
+    "/**/*/__tests__"
   ]
 }
