@@ -127,21 +127,25 @@ export class IpV4Handler extends IpAbstract {
     let firstLongAddress = this.ipToLong(ip)
     const res: string[] = []
 
-    // 不考虑同网段的情况
-    if (strMask === undefined) {
-      for (let i = 0; i < count; i++) {
-        res.push(this.longToIP(firstLongAddress++))
-      }
-      return res
-    }
+    const canLoop = [
+      (i: number) => i < count
+    ]
 
-    const subnet = this.subnet(ip, strMask)
-    for (let i = 0; i < count && i < subnet.available; i++) {
+    // 考虑同网段的情况
+    if (strMask !== undefined) {
+      const subnet = this.subnet(ip, strMask)
+      canLoop.push(
+        (i: number) => i < subnet.available
+      )
+    }
+    let i = 0;
+    while (canLoop.reduce((acc, curr) => acc && curr(i), true)) {
       res.push(this.longToIP(firstLongAddress++))
       // 防止溢出
       if (res[i] === '255.255.255.255') {
         break
       }
+      i++
     }
     return res
   }

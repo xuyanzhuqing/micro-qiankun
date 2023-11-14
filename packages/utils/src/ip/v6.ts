@@ -19,22 +19,26 @@ export class IpV6Handler extends IpAbstract {
     let firstLongAddress = this.ipToLong(ip)
     const res: string[] = []
 
-    // 不考虑同网段的情况
-    if (strMask === undefined) {
-      for (let i = 0; i < count; i++) {
-        res.push(this.longToIP(firstLongAddress + BigInt(i)))
-      }
-      return res
+    const canLoop = [
+      (i: number) => i < count
+    ]
+
+    // 考虑同网段的情况
+    if (strMask !== undefined) {
+      const subnet = this.subnet(ip, strMask)
+      canLoop.push(
+        (i: number) => i < subnet.available
+      )
     }
 
-
-    const subnet = this.subnet(ip, strMask)
-    for (let i = 0; i < count && i < subnet.available; i++) {
+    let i = 0
+    while (canLoop.reduce((acc, curr) => acc && curr(i), true)) {
       res.push(this.longToIP(firstLongAddress + BigInt(i)))
       // 判断溢出
       if ((res[i].match(/ffff/ig) || []).length === 8) {
         break
       }
+      i++
     }
     return res
   }
