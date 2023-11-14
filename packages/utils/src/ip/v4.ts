@@ -6,11 +6,10 @@ import maskUtil from '../mask'
 export class IpV4Handler extends IpAbstract {
   ipToLong(ip: string): number {
     const parts = ip.split('.');
-    const decimal =
-      parseInt(parts[0]) * Math.pow(256, 3) +
-      parseInt(parts[1]) * Math.pow(256, 2) +
-      parseInt(parts[2]) * Math.pow(256, 1) +
-      parseInt(parts[3]);
+    let decimal = 0
+    for (let i = 0; i < 4; i++) {
+      decimal += parseInt(parts[i], 10) * Math.pow(256, 4 - i - 1)
+    }
     return decimal;
   }
   longToIP(ip: number): string {
@@ -39,6 +38,15 @@ export class IpV4Handler extends IpAbstract {
     })
     return fragments.join('.')
   }
+  convertBinaryToIp(bites: Bite[]): string {
+    const res = new Array(4)
+    let oct
+    for (let i = 0; i < 4; i++) {
+      oct = bites.slice(i * 8, (1 + i) * 8).join('')
+      res[i] = parseInt(oct, 2)
+    }
+    return res.join('.')
+  }
   convertIPtoBinary(ip: string): Array<Bite> {
     const cache = this.convertCache.get(ip)
     if (cache) {
@@ -47,7 +55,7 @@ export class IpV4Handler extends IpAbstract {
 
     const octets = ip.split('.')
     const binaryOctets = octets.map((octet) => {
-      return parseInt(octet)
+      return parseInt(octet, 10)
         .toString(2)
         .padStart(8, "0")
         .split('')
@@ -59,20 +67,6 @@ export class IpV4Handler extends IpAbstract {
     return res
   }
 
-  compare(ip1: string, ip2: string): 0 | 1 | -1 {
-    const long1 = this.ipToLong(ip1)
-    const long2 = this.ipToLong(ip2)
-
-    if (long1 === long2) {
-      return 0
-    }
-
-    if (long1 > long2) {
-      return 1
-    }
-
-    return -1
-  }
 
   subnet(ip: string, mask: string): Subnet {
     const cidrMask = maskInstance.getV4Mask(mask)
@@ -176,14 +170,5 @@ export class IpV4Handler extends IpAbstract {
       i++
     }
     return res
-  }
-  contains(network: string, mask: string): (ip: string) => boolean {
-    const subInfo = this.subnet(network, mask)
-    const min = this.ipToLong(subInfo.firstAddress)
-    const max = this.ipToLong(subInfo.lastAddress)
-    return ip => {
-      const n = this.ipToLong(ip)
-      return min <= n && n <= max
-    }
   }
 }

@@ -1,3 +1,4 @@
+// https://www.w3cschool.cn/notebook/notebook-jghl2tn5.html ip 格式校验规则
 // 是不是 ipv4, ipv6 格式
 export const isIpFormat = (ip: string): boolean => {
   return /^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){6}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^::([\da-fA-F]{1,4}:){0,4}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:):([\da-fA-F]{1,4}:){0,3}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){2}:([\da-fA-F]{1,4}:){0,2}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){3}:([\da-fA-F]{1,4}:){0,1}((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){4}:((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$|^([\da-fA-F]{1,4}:){7}[\da-fA-F]{1,4}$|^:((:[\da-fA-F]{1,4}){1,6}|:)$|^[\da-fA-F]{1,4}:((:[\da-fA-F]{1,4}){1,5}|:)$|^([\da-fA-F]{1,4}:){2}((:[\da-fA-F]{1,4}){1,4}|:)$|^([\da-fA-F]{1,4}:){3}((:[\da-fA-F]{1,4}){1,3}|:)$|^([\da-fA-F]{1,4}:){4}((:[\da-fA-F]{1,4}){1,2}|:)$|^([\da-fA-F]{1,4}:){5}:([\da-fA-F]{1,4})?$|^([\da-fA-F]{1,4}:){6}:$/.test(ip)
@@ -69,12 +70,37 @@ export abstract class IpAbstract {
    * 1. 通过计算出 ip 的起始范围
    * 2. 判断 ip 的范围
    */
-  abstract contains(network: string, mask: string): (ip: string) => boolean;
+  contains(network: string, mask: string): (ip: string) => boolean {
+    const subInfo = this.subnet(network, mask)
+    const min = this.ipToLong(subInfo.firstAddress)
+    const max = this.ipToLong(subInfo.lastAddress)
+    return ip => {
+      const n = this.ipToLong(ip)
+      return min <= n && n <= max
+    }
+  }
   /**
    *
    * 1. ip1 与 ip2 从高位到低位比较 e.g. ip1 > ip2 = 1
    */
-  abstract compare(ip1: string, ip2: string): -1 | 0 | 1
+  public compare(ip1: string, ip2: string): 0 | 1 | -1 {
+    const long1 = this.ipToLong(ip1)
+    const long2 = this.ipToLong(ip2)
+
+    if (long1 === long2) {
+      return 0
+    }
+
+    if (long1 > long2) {
+      return 1
+    }
+
+    return -1
+  }
+  /**
+   * 将二进制数组转化为字符 ip 形式
+   */
+  abstract convertBinaryToIp(bites: Bite[]): string
   /**
    * 将 ip 字符转换为二进制数组
    */
@@ -92,11 +118,11 @@ export abstract class IpAbstract {
   /**
    * 将 ip 转化为数字
    */
-  abstract ipToLong(ip: string): number
+  abstract ipToLong(ip: string): number | BigInt
   /**
    * 将 数字 转化为 ip
    */
-  abstract longToIP(ip: number): string
+  abstract longToIP(ip: number | BigInt): string
   /**
    * 获取网段信息
    */
