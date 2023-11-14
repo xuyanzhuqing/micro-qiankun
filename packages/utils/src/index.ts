@@ -1,2 +1,6 @@
 export * from './auth'
+export * from './hex'
+export * from './random'
+export * from './ts-util'
 export * from './type'
+export * from './version-parser'
