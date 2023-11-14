@@ -75,14 +75,13 @@ export class Mask {
       return false
     }
   }
-
   public getV4Mask(mask: number): string | undefined
   public getV4Mask(mask: string): number | undefined
   public getV4Mask(mask: string | number): number | string | undefined {
     if (typeof mask === 'number') {
       return Mask.maskMap.get(mask as any)?.v4
     } else {
-      return Mask.maskMapV4.get(mask as any)
+      return Mask.maskMapV4.get(ipV4Handler.compress(mask) as any)
     }
   }
 
@@ -92,7 +91,7 @@ export class Mask {
     if (typeof mask === 'number') {
       return Mask.maskMap.get(mask as any)?.v6
     } else {
-      return Mask.maskMapV6.get(mask as any)
+      return Mask.maskMapV6.get(ipV6Handler.compress(mask).toLocaleLowerCase() as any)
     }
   }
 }
