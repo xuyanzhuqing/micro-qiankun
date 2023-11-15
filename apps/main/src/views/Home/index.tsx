@@ -46,14 +46,14 @@ const App: React.FC = () => {
   //     )
   //   }
   const { t } = useTranslation();
-
+  const { t: tHome } = useTranslation('home')
   return (
     <div>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Card title="跳转微服务" size="small">
+        <Card title={t('jumpToMicro', { ns: 'home' })} size="small">
           <Link to="/system/rhino">to rhino</Link>
         </Card>
-        <Card title="多语言" size="small">
+        <Card title={tHome('jumpToMicro')} size="small">
           <Space>
             <span>{t("submit")}</span>
             <span>{t('add', { ns: 'system' })}</span>
@@ -62,10 +62,10 @@ const App: React.FC = () => {
           </Space>
           <Pagination showQuickJumper defaultCurrent={2} total={500} />
         </Card>
-        <Card title="组建" size="small">
+        <Card title={tHome('components')} size="small">
           <Page dataSource={dataSource} columns={columns} />
         </Card>
-        <Card title="接口调用" size="small">
+        <Card title={tHome('useApi')} size="small">
           <table>
             <tbody>
               {/* {
