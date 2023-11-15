@@ -11,11 +11,13 @@ export const loadLocalShare = createAsyncThunk(
 );
 
 export type ShareState = {
-  auth: string[]
+  auth: string[];
+  language: string;
 }
 
 const initialState: ShareState = {
-  auth: []
+  auth: [],
+  language: 'zh_CN'
 }
 
 const shareSlice = createSlice({
@@ -24,6 +26,9 @@ const shareSlice = createSlice({
   reducers: {
     changeAuthAction(state, action: PayloadAction<typeof initialState['auth']>) {
       state.auth = action.payload;
+    },
+    changeLngAction(state, action: PayloadAction<typeof initialState['language']>) {
+      state.language = action.payload;
     },
   },
 });

@@ -11,5 +11,8 @@ export { EventBusType } from '@dnt/utils/lib/StoreShared';
 export const storeShared = new StoreShared<RootState, QianKunState>(store, undefined, appName)
 
 storeShared.on(EventBusType.SET_LANGUAGE, (state, prev) => {
+  store.dispatch({
+    type: 'share/changeLngAction', payload: state.lng
+  })
   i18n.changeLanguage(state.lng)
 })

@@ -16,5 +16,8 @@ const microAppStateActions: MicroAppStateActions = initGlobalState(qiankunState)
 export const storeShared = new StoreShared<RootState, QianKunState>(store, microAppStateActions)
 
 storeShared.on(EventBusType.SET_LANGUAGE, (state, prev) => {
+  store.dispatch({
+    type: 'share/changeLngAction', payload: state.lng
+  })
   i18nInstance.changeLanguage(state.lng)
 })
