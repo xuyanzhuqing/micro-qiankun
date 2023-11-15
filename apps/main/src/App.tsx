@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import './App.scss'
 import { routes } from './routes'
 import { useRoutes } from "react-router-dom";
-import { ConfigProvider, Pagination } from "antd";
+import { ConfigProvider } from "antd";
 import { AliasToken } from "antd/es/theme/interface";
 import theme from '@dnt/theme/lib/index'
 import { useAppSelector } from 'store/hooks'
@@ -25,13 +25,12 @@ const App = () => {
   const [rout, setRout] = useState(routes())
   const element = useRoutes(rout);
 
-  let [locale, setLocale] = useState(language)
-  const [localPkg, setLocalPkg] = useState(undefined)
+  let [locale, setLocale] = useState(undefined)
 
   useEffect(() => {
-    setLocalPkg(localeMap[language])
+    setLocale(localeMap[language])
     return () => {
-      setLocalPkg(undefined)
+      setLocale(undefined)
     }
   }, [language])
 
@@ -42,7 +41,7 @@ const App = () => {
   return (
     <Suspense fallback={<AppFullback />}>
       <ConfigProvider
-        locale={localPkg}
+        locale={locale}
         theme={{
           token: theme.basicTheme as Partial<AliasToken>,
         }}

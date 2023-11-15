@@ -1,5 +1,5 @@
 import './App.scss';
-import { BrowserRouter, useRoutes } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import { ConfigProvider } from 'antd';
 import theme from '@dnt/theme'
 import { AliasToken } from "antd/es/theme/interface";

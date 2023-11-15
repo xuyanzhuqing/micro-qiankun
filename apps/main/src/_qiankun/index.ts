@@ -6,7 +6,7 @@ export { EventBusType } from '@dnt/utils/lib/StoreShared';
 
 const qiankunState: QianKunState = {
   eventBusType: EventBusType.VOID,
-  lng: 'zh_CN',
+  lng: localStorage.getItem('i18nextLng'),
   menus: []
 }
 

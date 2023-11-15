@@ -28,6 +28,7 @@ const App: React.FC = () => {
       {
         afterMount: [(app) => new Promise((resolve, reject) => {
           storeShared.emit(EventBusType.SYNC, { auth: ['来自 main 的数据'] })
+          storeShared.emit(EventBusType.SET_LANGUAGE, {})
           /**
            * 未知返回
            */
