@@ -1,6 +1,6 @@
 import locale from '@dnt/locale'
-import * as en_GB from './locals/en_GB'
-import * as zh_CN from './locals/zh_CN'
+import * as en_GB from './locales/en_GB'
+import * as zh_CN from './locales/zh_CN'
 
 export const localResources = {
   en_GB,
