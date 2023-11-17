@@ -113,7 +113,7 @@ const Login = () => {
           <Form.Item
             name={t('password')}
             className={cssStyle['login-item']}
-            rules={[{ required: true, message: t('inputPlaceholder', { value: t('password') }) }]}
+            rules={[{ required: true, min: 8, }]}
           >
             <Input.Password placeholder={t('password')} />
           </Form.Item>
