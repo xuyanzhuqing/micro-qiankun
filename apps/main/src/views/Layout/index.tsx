@@ -1,6 +1,8 @@
 import {
   GlobalOutlined,
   LogoutOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined
 } from '@ant-design/icons';
 import { PageContainer, ProCard, ProLayout } from '@ant-design/pro-components';
 import { Dropdown } from 'antd';
@@ -17,6 +19,12 @@ import theme from '@dnt/theme/lib/index'
 import { useEffect } from 'react';
 import { changeMenusAction } from 'store/modules/login';
 import { useDispatch } from 'react-redux';
+import logo from '../../logo.svg'
+
+const collapsedStyle = {
+  color: 'rgba(255, 255, 255, .65)',
+  marginLeft: '20px'
+}
 
 const Layout = () => {
   const navigate = useNavigate()
@@ -42,10 +50,27 @@ const Layout = () => {
   const { t } = useTranslation();
   const i18n = getI18n()
 
+  const toggleCollapsed = () => {
+    setProLayoutProps(props => {
+      props.collapsed = !props.collapsed;
+    })
+  }
+
+  const CollapsedHandler = proLayoutProps.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined
   return (
     <ProLayout
       token={theme.basicTheme.proLayout}
       {...proLayoutProps}
+      collapsedButtonRender={collapsed => null}
+      headerTitleRender={() => {
+        return (
+          <>
+            <img src={logo} alt="logo" />
+            <h1>DNT</h1>
+            <CollapsedHandler onClick={toggleCollapsed} style={collapsedStyle} />
+          </>
+        )
+      }}
       avatarProps={{
         src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
         size: 'small',
