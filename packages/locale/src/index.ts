@@ -34,7 +34,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: localStorage.getItem('i18nextLng') || fallbackLng,
+    lng: localStorage.getItem('i18nextLng') || Language.zh_CN,
     // we init with resources
     resources,
     fallbackLng,
@@ -50,5 +50,20 @@ i18n
       escapeValue: false
     }
   });
+
+// after i18next.init(options);
+i18n.services.formatter?.add('lowercase', (value: string, lng, options) => {
+  return value.toLowerCase();
+});
+i18n.services.formatter?.add('toUpperCase', (value: string, lng, options) => {
+  return value.toUpperCase();
+});
+i18n.services.formatter?.add('underscore', (value: string, lng, options) => {
+  return value.replace(/\s+/g, '_');
+});
+i18n.services.formatter?.add('toLocalDate', (value: string | number, lng, options) => {
+  const locale = lng?.replace('_', '-') || fallbackLng
+  return new Intl.DateTimeFormat(locale).format(new Date(value))
+});
 
 export default i18n;

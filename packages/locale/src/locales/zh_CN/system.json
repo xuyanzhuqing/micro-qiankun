@@ -15,5 +15,6 @@
   "username": "用户名",
   "password": "密码",
   "inputPlaceholder": "请输入{{value}}",
-  "selectPlaceholder": "请选择{{value}}"
+  "selectPlaceholder": "请选择{{value}}",
+  "date": "{{value, toLocalDate}}"
 }

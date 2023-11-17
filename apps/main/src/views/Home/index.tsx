@@ -53,8 +53,9 @@ const App: React.FC = () => {
         <Card title={t('jumpToMicro', { ns: 'home' })} size="small">
           <Link to="/system/rhino">to rhino</Link>
         </Card>
-        <Card title={tHome('jumpToMicro')} size="small">
-          <Space>
+        <Card title={tHome('international')} size="small">
+          <Space direction="vertical">
+            <span>{t('date', { value: 'Fri Nov 17 2023 16:35:27 GMT+0800 (中国标准时间)' })}</span>
             <span>{t("submit")}</span>
             <span>{t('add', { ns: 'system' })}</span>
             <span>{t('role', { ns: 'user' })}</span>

@@ -15,5 +15,6 @@
   "username": "username",
   "password": "password",
   "inputPlaceholder": "please insert {{value}}",
-  "selectPlaceholder": "please select {{value}}"
+  "selectPlaceholder": "please select {{value}}",
+  "date": "{{value, toLocalDate}}"
 }
