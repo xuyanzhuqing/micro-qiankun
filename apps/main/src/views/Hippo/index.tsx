@@ -114,6 +114,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
     render: (text, record, _, action) => [
       <a
         key="editable"
+        href="void 0"
         onClick={() => {
           action?.startEditable?.(record.id);
         }}
@@ -135,7 +136,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
   },
 ];
 
-export default () => {
+const Hippo = () => {
   const actionRef = useRef<ActionType>();
   return (
     <ProTable<GithubIssueItem>
@@ -223,3 +224,5 @@ export default () => {
     />
   );
 };
+
+export default Hippo
