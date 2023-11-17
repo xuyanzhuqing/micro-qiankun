@@ -1,0 +1,6 @@
+{
+  "required": "${label} is required",
+  "string": {
+    "min": "${label} must be at least ${min} characters"
+  }
+}

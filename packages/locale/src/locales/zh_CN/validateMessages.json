@@ -1,0 +1,13 @@
+{
+  "required": "${label} 是必选字段",
+  "string": {
+    "min": "${label} 长度必须至少 ${min} 位",
+    "range": "${label} 长度必须在 ${min}~${max} 之间"
+  },
+  "number": {
+    "len": "${name} 长度必须是 ${len} 位",
+    "min": "${name} 长度必须至少 ${min} 位",
+    "max": "${name} 长度必须最多 ${min} 位",
+    "range": "${name} 长度必须在 ${min}~${max} 之间"
+  }
+}

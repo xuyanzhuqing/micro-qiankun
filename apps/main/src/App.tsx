@@ -10,6 +10,7 @@ import { AppFullback } from '@dnt/components'
 import { dntRouteMenuBuilder } from 'utils/router'
 import zh_CN from 'antd/locale/zh_CN';
 import en_GB from 'antd/locale/en_GB';
+import { useValidateMsgs } from 'hooks/useValidateMsgs'
 
 const localeMap: any = {
   zh_CN,
@@ -38,9 +39,12 @@ const App = () => {
     setRout(dntRouteMenuBuilder(menus))
   }, [menus])
 
+  const validateMessages = useValidateMsgs()
+
   return (
     <Suspense fallback={<AppFullback />}>
       <ConfigProvider
+        form={{ validateMessages }}
         locale={locale}
         theme={{
           token: theme.basicTheme as Partial<AliasToken>,
