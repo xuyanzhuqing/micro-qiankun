@@ -17,6 +17,17 @@ export enum Language {
   zh_CN = 'zh_CN'
 }
 
+export const LanguageEnum: Array<{ value: Language, label: string }> = [
+  {
+    value: Language.en_GB,
+    label: 'English',
+  },
+  {
+    value: Language.zh_CN,
+    label: '简体中文'
+  }
+]
+
 export const fallbackLng = Language.zh_CN
 
 i18n

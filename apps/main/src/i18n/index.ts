@@ -10,6 +10,7 @@ export const localResources = {
 // 动态加载当前项目需要的语言包
 const en_GB_keys = Object.keys(en_GB) as Array<keyof typeof en_GB>
 en_GB_keys.forEach(key => {
+  console.info(key, en_GB[key])
   locale.addResourceBundle('en_GB', key, en_GB[key])
 })
 

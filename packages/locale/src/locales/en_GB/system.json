@@ -11,5 +11,9 @@
   "info": "info",
   "exit": "exit",
   "login": "login",
-  "logout": "logout"
+  "logout": "logout",
+  "username": "username",
+  "password": "password",
+  "inputPlaceholder": "please insert {{value}}",
+  "selectPlaceholder": "please select {{value}}"
 }
