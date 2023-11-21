@@ -10,7 +10,6 @@ import { LanguageEnum, fallbackLng } from '@dnt/locale';
 import { useTranslation } from 'react-i18next';
 import { EventBusType, storeShared } from '_qiankun';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
-
 const REMEMBER_ME = 'login.remember-me'
 const USERNAME = 'login.username'
 const PASSWORD = 'login.password'
@@ -105,7 +104,10 @@ const Login = () => {
           <Form.Item
             name={t('username')}
             className={cssStyle['login-item']}
-            rules={[{ required: true, message: t('inputPlaceholder', { value: t('username') }) }]}
+            validateTrigger="onChange"
+            rules={[
+              { required: true, message: t('inputPlaceholder', { value: t('username') }) },
+            ]}
           >
             <Input placeholder={t("username")} />
           </Form.Item>
