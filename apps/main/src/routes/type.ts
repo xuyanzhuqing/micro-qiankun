@@ -11,4 +11,5 @@ export interface DntPureMenuProps {
   code?: string;
   container?: string;
   entry?: string;
+  desc?: string;
 }

@@ -39,6 +39,7 @@ export const dntMenuBuilder = (menus: DntPureMenuProps[]): ProLayoutProps['route
           path: makePath(route),
           name: route.key,
           lang: route.lang,
+          desc: route.desc
         }
       })
     }

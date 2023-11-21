@@ -20,6 +20,7 @@ import { useEffect } from 'react';
 import { changeMenusAction } from 'store/modules/login';
 import { useDispatch } from 'react-redux';
 import logo from '../../logo.svg'
+import { useAppSelector } from 'store/hooks';
 
 const collapsedStyle = {
   color: 'rgba(255, 255, 255, .65)',
@@ -35,17 +36,17 @@ const Layout = () => {
     storeShared.emit(EventBusType.SET_LANGUAGE, { lng })
   }
 
-  // const menus = useAppSelector((state) => {
-  //   return state.login.menus
-  // })
+  const menus = useAppSelector((state) => {
+    return state.login.menus
+  })
 
   useEffect(() => {
     (async () => {
-      const menus = await mockMenusApi()
-      dispatch(changeMenusAction(menus));
+      const remoteMenus = await mockMenusApi()
+      dispatch(changeMenusAction(remoteMenus));
       // navigate("/home");
     })()
-  }, [dispatch])
+  }, [])
 
   const { t } = useTranslation();
   const i18n = getI18n()
@@ -157,6 +158,10 @@ const Layout = () => {
                   props.location.pathname = item.path || '/home'
                   navigate(props.location.pathname)
                 }
+
+                if (props.route) {
+                  props.route.desc = item.desc
+                }
               })
             }}
           >
@@ -165,7 +170,7 @@ const Layout = () => {
         )
       }}
     >
-      <PageContainer title={false}>
+      <PageContainer title={false} subTitle={proLayoutProps.route?.desc}>
         <ProCard>
           <Outlet />
         </ProCard>

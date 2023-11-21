@@ -12,7 +12,7 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
           zh_CN: '首页'
         },
         icon: 'my-icon-aixin',
-        element: 'Home'
+        element: 'Home',
       },
       {
         path: '/system',
@@ -34,6 +34,7 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
             "entry": "rhino",
             "container": "#container",
             element: 'Micro',
+            desc: 'rhino 角色管理'
           },
           {
             path: 'user',
@@ -45,6 +46,7 @@ export const mockMenusApi = (interval = 200): Promise<DntPureMenuProps[]> => {
             "entry": "rhino",
             "container": "#container",
             element: 'Micro',
+            desc: 'rhino 用户管理'
           },
           {
             path: 'role',

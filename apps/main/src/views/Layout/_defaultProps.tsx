@@ -10,7 +10,9 @@ const proLayoutProps: Partial<ProLayoutProps> = {
     // 修复 f5 刷新菜单选中与路由不符
     pathname: window.location.pathname,
   },
-  route: {},
+  route: {
+    desc: ''
+  },
 }
 
 export default proLayoutProps
