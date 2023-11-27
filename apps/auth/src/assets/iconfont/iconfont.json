@@ -1,24 +1,10 @@
 {
-  "id": "586888",
-  "name": "modify-name",
+  "id": "4347342",
+  "name": "dnt-auth",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
-  "description": "这是一个修改名称的临时项目",
+  "description": "UI 2.0 for auth",
   "glyphs": [
-    {
-      "icon_id": "704645",
-      "name": "sort",
-      "font_class": "sort",
-      "unicode": "ea96",
-      "unicode_decimal": 60054
-    },
-    {
-      "icon_id": "458996",
-      "name": "home",
-      "font_class": "home",
-      "unicode": "e61e",
-      "unicode_decimal": 58910
-    },
     {
       "icon_id": "974125",
       "name": "star",
@@ -27,46 +13,11 @@
       "unicode_decimal": 58895
     },
     {
-      "icon_id": "978987",
-      "name": "反馈意见",
-      "font_class": "suggestion",
-      "unicode": "e649",
-      "unicode_decimal": 58953
-    },
-    {
-      "icon_id": "1013095",
-      "name": "学位",
-      "font_class": "education",
-      "unicode": "e673",
-      "unicode_decimal": 58995
-    },
-    {
-      "icon_id": "1123780",
-      "name": "笑脸",
-      "font_class": "satisfied",
-      "unicode": "e79e",
-      "unicode_decimal": 59294
-    },
-    {
-      "icon_id": "1167183",
-      "name": "收入",
-      "font_class": "income",
-      "unicode": "e645",
-      "unicode_decimal": 58949
-    },
-    {
-      "icon_id": "2443758",
-      "name": "图章",
-      "font_class": "qualification",
-      "unicode": "e629",
-      "unicode_decimal": 58921
-    },
-    {
-      "icon_id": "3749682",
-      "name": "会议室教室",
-      "font_class": "classroom",
-      "unicode": "e67e",
-      "unicode_decimal": 59006
+      "icon_id": "7038978",
+      "name": "auth",
+      "font_class": "auth",
+      "unicode": "e624",
+      "unicode_decimal": 58916
     }
   ]
 }
