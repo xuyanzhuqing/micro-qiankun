@@ -1,0 +1,30 @@
+{
+  "id": "4347332",
+  "name": "dnt-main",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "2.0 UI 入口项目",
+  "glyphs": [
+    {
+      "icon_id": "11474203",
+      "name": "auto",
+      "font_class": "auto",
+      "unicode": "e877",
+      "unicode_decimal": 59511
+    },
+    {
+      "icon_id": "11372639",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e8ab",
+      "unicode_decimal": 59563
+    },
+    {
+      "icon_id": "1115013",
+      "name": "404",
+      "font_class": "404",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}
