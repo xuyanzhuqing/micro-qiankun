@@ -14,4 +14,11 @@ pnpm [过滤](https://pnpm.io/zh/filtering#--filter-package_name)启动某单独
 pnpm --filter main run start
 ```
 
+更新 iconfont
+
+```bash
+npm -g install iconfont-manager
+pnpm iconfont
+```
+
 本工程采用 [pnpm workspace](https://pnpm.io/zh/workspaces) & [gulp.js](https://gulpjs.com/docs/en/getting-started/quick-start) 进行任务编排

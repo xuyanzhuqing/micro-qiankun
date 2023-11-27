@@ -1,7 +1,8 @@
 const { series, parallel } = require('gulp');
 const spawn = require('cross-spawn');
 const shell = require('shelljs');
-
+const process = require('process');
+const path = require('path');
 const config = {
   apps: [
     'main',
@@ -51,3 +52,38 @@ exports.postBuild = series(
       return cb => { shell.cp('-r', `./apps/${app}/build`, `./build/child/${app}/`); cb() }
     })
 )
+
+
+/**
+ * 更新 iconfont
+ */
+const rcMap = new Map(
+  shell
+    .cat('./.iconfontrc')
+    .replace(/\s?=\s?/g, '=')
+    .replace(/\"/g, "")
+    .split('\n')
+    .map(v => v.split('=')))
+const iconfontShells = shell.ls("./apps/**/*/iconfont/iconfont.json")
+  .map(iconfont => {
+    const { id, name } = JSON.parse(shell.cat(iconfont).toString())
+    const filePath = path.join(process.cwd(), path.dirname(iconfont), '..')
+    const user = rcMap.get('user')
+    const password = rcMap.get('password')
+
+    if (!user || !password) {
+      console.info(
+        `
+        please run the flowing command and fix the iconfont configuration
+
+        touch .iconfontrc
+        echo user=YOUR_USERNAME\\\\npassword=YOUR_PASSWORD > .iconfontrc
+
+        `)
+      throw new Error('login iconfont  missing username or password')
+    }
+
+    return () => spawn('iconfont-manager', ['updateOne', id, name, user, password, filePath])
+  })
+
+exports.iconfont = parallel(...iconfontShells)
