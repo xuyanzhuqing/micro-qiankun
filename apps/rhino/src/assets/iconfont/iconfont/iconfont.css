@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4347337 */
-  src: url('iconfont.woff2?t=1701069197405') format('woff2'),
-       url('iconfont.woff?t=1701069197405') format('woff'),
-       url('iconfont.ttf?t=1701069197405') format('truetype');
+  src: url('iconfont.woff2?t=1701069830499') format('woff2'),
+       url('iconfont.woff?t=1701069830499') format('woff'),
+       url('iconfont.ttf?t=1701069830499') format('truetype');
 }
 
 .iconfont {
@@ -11,5 +11,9 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--rhino:before {
+  content: "\e756";
 }
 

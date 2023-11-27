@@ -5,5 +5,12 @@
   "css_prefix_text": "icon-",
   "description": "2.0 UI for rhino",
   "glyphs": [
+    {
+      "icon_id": "8744436",
+      "name": "36-rhino",
+      "font_class": "-rhino",
+      "unicode": "e756",
+      "unicode_decimal": 59222
+    }
   ]
 }
