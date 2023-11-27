@@ -27,6 +27,8 @@ pnpm build
 |swr|https://swr.bootcss.com/docs/getting-started|
 |sass|https://www.sass.hk/|
 |typescript|https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html|
+|convert|https://www.npmjs.com/package/convert|
+|ahooks|https://www.npmjs.com/package/ahooks|
 
 
 #### 本地依赖
