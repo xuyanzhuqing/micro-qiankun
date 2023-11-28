@@ -23,7 +23,9 @@
     "pnpm": ">=6.11.0"
   },
   "devDependencies": {
+    "commander": "^11.1.0",
     "cross-spawn": "^7.0.3",
+    "dotenv": "^16.3.1",
     "gulp": "^4.0.2",
     "shelljs": "^0.8.5"
   }

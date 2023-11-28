@@ -19,6 +19,7 @@ pnpm --filter main run start
 ```bash
 npm -g install iconfont-manager
 pnpm iconfont
+pnpm iconfont -n main
 ```
 
 本工程采用 [pnpm workspace](https://pnpm.io/zh/workspaces) & [gulp.js](https://gulpjs.com/docs/en/getting-started/quick-start) 进行任务编排

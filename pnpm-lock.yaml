@@ -8,9 +8,15 @@ importers:
 
   .:
     devDependencies:
+      commander:
+        specifier: ^11.1.0
+        version: 11.1.0
       cross-spawn:
         specifier: ^7.0.3
         version: 7.0.3
+      dotenv:
+        specifier: ^16.3.1
+        version: 16.3.1
       gulp:
         specifier: ^4.0.2
         version: 4.0.2
@@ -7922,6 +7928,11 @@ packages:
 
   /commander@11.0.0:
     resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
+    engines: {node: '>=16'}
+    dev: true
+
+  /commander@11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
     dev: true
 

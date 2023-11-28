@@ -11,7 +11,8 @@
     "reduxjs",
     "sider",
     "Siderbar",
-    "subdirs"
+    "subdirs",
+    "iconfontrc"
   ],
   "cSpell.ignorePaths": [
     "/pnpm-lock.yaml",

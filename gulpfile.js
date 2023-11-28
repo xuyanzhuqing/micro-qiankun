@@ -3,6 +3,8 @@ const spawn = require('cross-spawn');
 const shell = require('shelljs');
 const process = require('process');
 const path = require('path');
+const { program } = require('commander');
+
 const config = {
   apps: [
     'main',
@@ -57,22 +59,16 @@ exports.postBuild = series(
 /**
  * 更新 iconfont
  */
-const rcMap = new Map(
-  shell
-    .cat('./.iconfontrc')
-    .replace(/\s?=\s?/g, '=')
-    .replace(/\"/g, "")
-    .split('\n')
-    .map(v => v.split('=')))
-const iconfontShells = shell.ls("./apps/**/*/iconfont/iconfont.json")
+const rcMap = require('dotenv').config({ path: './.iconfontrc' }).parsed
+const iconfontShells = new Map(shell.ls("./apps/**/*/iconfont/iconfont.json")
   .map(iconfont => {
-    const { id, name } = JSON.parse(shell.cat(iconfont).toString())
+    const { id, name } = JSON.parse(shell.cat(iconfont))
     const filePath = path.join(process.cwd(), path.dirname(iconfont), '..')
-    const user = rcMap.get('user')
-    const password = rcMap.get('password')
+    const user = rcMap.user
+    const password = rcMap.password
 
     if (!user || !password) {
-      console.info(
+      console.warn(
         `
         please run the flowing command and fix the iconfont configuration
 
@@ -83,7 +79,25 @@ const iconfontShells = shell.ls("./apps/**/*/iconfont/iconfont.json")
       throw new Error('login iconfont  missing username or password')
     }
 
-    return () => spawn('iconfont-manager', ['updateOne', id, name, user, password, filePath])
-  })
+    return [name, () => spawn('iconfont-manager', ['updateOne', id, name, user, password, filePath], { stdio: 'inherit' })]
+  }))
 
-exports.iconfont = parallel(...iconfontShells)
+exports.iconfont = function (cb) {
+  let error
+  try {
+    program
+      .option('-n, --name <char>')
+      .parse();
+
+    let { name } = program.opts();
+    if (name) {
+      name = name.startsWith('dnt-') ? name : `dnt-${name}`
+      parallel(iconfontShells.get(name))()
+    } else {
+      parallel(...iconfontShells.values())()
+    }
+  } catch (e) {
+    error = e
+  }
+  cb(error)
+}
