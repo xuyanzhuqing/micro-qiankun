@@ -468,6 +468,9 @@ importers:
       '@dnt/locale':
         specifier: workspace:*
         version: link:../locale
+      '@dnt/utils':
+        specifier: workspace:*
+        version: link:../utils
       antd:
         specifier: ^5.10.0
         version: 5.10.1(react-dom@18.2.0)(react@18.2.0)

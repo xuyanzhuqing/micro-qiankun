@@ -61,6 +61,7 @@
   "dependencies": {
     "@dnt/locale": "workspace:*",
     "antd": "^5.10.0",
+    "@dnt/utils": "workspace:*",
     "react-i18next": "^13.2.2"
   },
   "devDependencies": {
