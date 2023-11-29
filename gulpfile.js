@@ -57,32 +57,31 @@ exports.postBuild = series(
 
 
 /**
- * 更新 iconfont
- */
-const rcMap = require('dotenv').config({ path: './.iconfontrc' }).parsed
-const iconfontShells = new Map(shell.ls("./apps/**/*/iconfont/iconfont.json")
-  .map(iconfont => {
-    const { id, name } = JSON.parse(shell.cat(iconfont))
-    const filePath = path.join(process.cwd(), path.dirname(iconfont), '..')
-    const user = rcMap.user
-    const password = rcMap.password
+* 更新 iconfont
+*/
+exports.iconfont = function (cb) {
+  const rcMap = require('dotenv').config({ path: './.iconfontrc' }).parsed
+  const iconfontShells = new Map(shell.ls("./apps/**/*/iconfont/iconfont.json")
+    .map(iconfont => {
+      const { id, name } = JSON.parse(shell.cat(iconfont))
+      const filePath = path.join(process.cwd(), path.dirname(iconfont), '..')
+      const user = rcMap.user
+      const password = rcMap.password
 
-    if (!user || !password) {
-      console.warn(
-        `
+      if (!user || !password) {
+        console.warn(
+          `
         please run the flowing command and fix the iconfont configuration
 
         touch .iconfontrc
         echo user=YOUR_USERNAME\\\\npassword=YOUR_PASSWORD > .iconfontrc
 
         `)
-      throw new Error('login iconfont  missing username or password')
-    }
+        throw new Error('login iconfont  missing username or password')
+      }
 
-    return [name, () => spawn('iconfont-manager', ['updateOne', id, name, user, password, filePath], { stdio: 'inherit' })]
-  }))
-
-exports.iconfont = function (cb) {
+      return [name, () => spawn('iconfont-manager', ['updateOne', id, name, user, password, filePath], { stdio: 'inherit' })]
+    }))
   let error
   try {
     program
