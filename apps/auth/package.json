@@ -4,7 +4,7 @@
   "private": false,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@ant-design/pro-components": "^2.6.29",
+    "@ant-design/pro-components": "^2.6.43",
     "@dnt/axios": "workspace:*",
     "@dnt/components": "workspace:*",
     "@dnt/config": "workspace:*",
@@ -15,7 +15,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/user-event": "^13.5.0",
     "ahooks": "^3.7.8",
-    "antd": "^5.9.3",
+    "antd": "^5.11.5",
     "convert": "^4.14.0",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
