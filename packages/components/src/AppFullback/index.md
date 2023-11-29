@@ -1,4 +1,4 @@
-# AppFullback - 框架回退
+# AppFullback 框架回退
 
 页面加载失败回退界面
 

@@ -1,4 +1,4 @@
-# NotFound - 404
+# NotFound 404
 
 404 页面
 
