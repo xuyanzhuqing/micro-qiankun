@@ -13,6 +13,7 @@ describe("Mask it test", () => {
 
     expect(Mask.isValidV4('128.0.00.000')).toBe(true);
     expect(Mask.isValidV4('255.255.255.00')).toBe(true);
+    expect(Mask.isValidV4('8000:0000:0:0:0:0:0:0')).toBe(false);
   });
 
   test("Mask getV4Mask test", () => {

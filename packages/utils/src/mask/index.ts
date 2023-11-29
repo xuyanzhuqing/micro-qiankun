@@ -46,7 +46,7 @@ export class Mask {
       return mask % 1 === 0 && mask >= 1 && mask <= 32
     }
     const compressed = ipV4Handler.compress(mask)
-    return this.masks.includes(compressed as ValidMask)
+    return !!Mask.maskMapV4.get(compressed as ValueOfV4)
   }
 
   /**
@@ -57,7 +57,7 @@ export class Mask {
       return mask % 1 === 0 && mask >= 1 && mask <= 128
     } else {
       const compressed = ipV6Handler.compress(mask.toLocaleLowerCase())
-      return this.masks.includes(compressed as ValidMask)
+      return !!Mask.maskMapV6.get(compressed as ValueOfV6)
     }
   }
 
@@ -68,9 +68,9 @@ export class Mask {
     if (typeof mask === 'number') {
       return mask % 1 === 0 && mask >= 1 && mask <= 128
     } else if (isV4Format(mask)) {
-      return this.isValidV4(mask)
+      return Mask.isValidV4(mask)
     } else if (isV6Format(mask)) {
-      return this.isValidV6(mask)
+      return Mask.isValidV6(mask)
     } else {
       return false
     }
