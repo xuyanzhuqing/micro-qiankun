@@ -170,7 +170,7 @@ const Layout = () => {
         )
       }}
     >
-      <PageContainer title={false} subTitle={proLayoutProps.route?.desc}>
+      <PageContainer title={false} subTitle={proLayoutProps.route?.desc || ' '}>
         <ProCard>
           <Outlet />
         </ProCard>

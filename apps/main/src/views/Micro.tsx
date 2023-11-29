@@ -12,36 +12,33 @@ const App: React.FC = () => {
 
   let location = useLocation();
 
-  useEffect(() => {
-    const apps = dntMicroMenuBuilder(menus, location.pathname)
+  const apps = dntMicroMenuBuilder(menus, location.pathname)
 
-    // 传递菜单信息到各个微应用
-    const mixedProps = apps.map(app => {
-      app.props = {
-        basename: app.activeRule
-      }
-      return app
-    })
+  // 传递菜单信息到各个微应用
+  const mixedProps = apps.map(app => {
+    app.props = {
+      basename: app.activeRule
+    }
+    return app
+  })
 
-    registerMicroApps(
-      mixedProps,
-      {
-        afterMount: [(app) => new Promise((resolve, reject) => {
-          storeShared.emit(EventBusType.SYNC, { auth: ['来自 main 的数据'] })
-          storeShared.emit(EventBusType.SET_LANGUAGE, {})
-          /**
-           * 未知返回
-           */
-          resolve([])
-        })],
-      },
-    )
+  registerMicroApps(
+    mixedProps,
+    {
+      afterMount: [(app) => new Promise((resolve, reject) => {
+        storeShared.emit(EventBusType.SYNC, { auth: ['来自 main 的数据'] })
+        storeShared.emit(EventBusType.SET_LANGUAGE, {})
+        /**
+         * 未知返回
+         */
+        resolve([])
+      })],
+    },
+  )
 
-    start({
-      sandbox: false
-    })
-  }, [location, menus])
-
+  start({
+    sandbox: false
+  })
   return (
     <div id="container"></div>
   )

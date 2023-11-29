@@ -40,6 +40,11 @@ export async function bootstrap() {
   // console.log('[react16] react app bootstraped');
 }
 
+// 增加 update 钩子以便主应用手动更新微应用
+export async function update(props: any) {
+  mount(props);
+}
+
 export async function mount(props: any) {
   // 装填微服务监听程序
   storeShared

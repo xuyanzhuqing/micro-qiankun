@@ -64,28 +64,27 @@ const App: React.FC = () => {
   const { t } = useTranslation();
   const { t: tHome } = useTranslation('home')
   return (
-    <div>
-      <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Card title={t('jumpToMicro', { ns: 'home' })} size="small">
-          <Link to="/system/rhino">to rhino</Link>
-        </Card>
-        <Card title={tHome('international')} size="small">
-          <Space direction="vertical">
-            <span>{t('date', { value: 'Fri Nov 17 2023 16:35:27 GMT+0800 (中国标准时间)' })}</span>
-            <span>{t("submit")}</span>
-            <span>{t('add', { ns: 'system' })}</span>
-            <span>{t('role', { ns: 'user' })}</span>
-            <Trans i18nKey="submit">trans</Trans>
-          </Space>
-          <Pagination showQuickJumper defaultCurrent={2} total={500} />
-        </Card>
-        <Card title={tHome('components')} size="small">
-          <Page dataSource={dataSource} columns={columns} />
-        </Card>
-        <Card title={tHome('useApi')} size="small">
-          <table>
-            <tbody>
-              {/* {
+    <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+      <Card title={t('jumpToMicro', { ns: 'home' })} size="small">
+        <Link to="/system/rhino">to rhino</Link>
+      </Card>
+      <Card title={tHome('international')} size="small">
+        <Space direction="vertical">
+          <span>{t('date', { value: 'Fri Nov 17 2023 16:35:27 GMT+0800 (中国标准时间)' })}</span>
+          <span>{t("submit")}</span>
+          <span>{t('add', { ns: 'system' })}</span>
+          <span>{t('role', { ns: 'user' })}</span>
+          <Trans i18nKey="submit">trans</Trans>
+        </Space>
+        <Pagination showQuickJumper defaultCurrent={2} total={500} />
+      </Card>
+      <Card title={tHome('components')} size="small">
+        <Page dataSource={dataSource} columns={columns} />
+      </Card>
+      <Card title={tHome('useApi')} size="small">
+        <table>
+          <tbody>
+            {/* {
                 (data?.data.content || []).map(data => {
                   return <tr key={data.id}>
                     <td>{data.name}</td>
@@ -94,56 +93,55 @@ const App: React.FC = () => {
                   </tr>
                 })
               } */}
-            </tbody>
-          </table>
-        </Card>
-        <Card title={tHome('formInternational')} size="small">
-          <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            style={{ maxWidth: 600 }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
+          </tbody>
+        </table>
+      </Card>
+      <Card title={tHome('formInternational')} size="small">
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item<FieldType>
+            label={t('username')}
+            name="username"
+            rules={[
+              { required: true },
+              validatorChar
+            ]}
           >
-            <Form.Item<FieldType>
-              label={t('username')}
-              name="username"
-              rules={[
-                { required: true },
-                validatorChar
-              ]}
-            >
-              <Input />
-            </Form.Item>
+            <Input />
+          </Form.Item>
 
-            <Form.Item<FieldType>
-              label={t('password')}
-              name="password"
-              rules={[{ required: true }]}
-            >
-              <Input.Password />
-            </Form.Item>
+          <Form.Item<FieldType>
+            label={t('password')}
+            name="password"
+            rules={[{ required: true }]}
+          >
+            <Input.Password />
+          </Form.Item>
 
-            <Form.Item<FieldType>
-              name="remember"
-              valuePropName="checked"
-              wrapperCol={{ offset: 8, span: 16 }}
-            >
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
+          <Form.Item<FieldType>
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{ offset: 8, span: 16 }}
+          >
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </Space>
-    </div>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </Space>
   )
 };
 
