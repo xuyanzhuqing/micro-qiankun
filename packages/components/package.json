@@ -60,13 +60,15 @@
   },
   "dependencies": {
     "@dnt/locale": "workspace:*",
-    "antd": "^5.10.0",
     "@dnt/utils": "workspace:*",
+    "antd": "^5.10.0",
+    "lodash-es": "^4.17.21",
     "react-i18next": "^13.2.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@types/lodash-es": "^4.17.10",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
