@@ -24,7 +24,7 @@ export default () => {
   function onFinish() { }
   return (
     <Form
-      name="complex-form"
+      name="ip-mask"
       onFinish={onFinish}
       initialValues={initialValues}
       labelCol={{ span: 8 }}
